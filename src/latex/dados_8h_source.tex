@@ -1,0 +1,34 @@
+\doxysection{dados.\+h}
+\hypertarget{dados_8h_source}{}\label{dados_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ region\ Estruturas}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_antena}{Antena}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{char}\ frequencia;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ x,\ y;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_antena}{Antena}}*\ next;}
+\DoxyCodeLine{00025\ \}\ \mbox{\hyperlink{struct_antena}{Antena}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{char}\ frequencia;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ x,\ y;}
+\DoxyCodeLine{00033\ \}\ \mbox{\hyperlink{struct_antena_file}{AntenaFile}};}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#pragma\ region\ Declarações}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00040\ \mbox{\hyperlink{struct_antena}{Antena}}*\ LerAntenas(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nome\_ficheiro,\ \mbox{\hyperlink{struct_antena}{Antena}}*\ lista);}
+\DoxyCodeLine{00041\ \mbox{\hyperlink{struct_antena}{Antena}}*\ CriaAntena(\textcolor{keywordtype}{char}\ frequencia,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00042\ \mbox{\hyperlink{struct_antena}{Antena}}*\ ProcuraAntena(\mbox{\hyperlink{struct_antena}{Antena}}*\ lista,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00043\ \mbox{\hyperlink{struct_antena}{Antena}}*\ InsereOrdenado(\mbox{\hyperlink{struct_antena}{Antena}}*\ lista,\ \textcolor{keywordtype}{char}\ frequencia,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00044\ \mbox{\hyperlink{struct_antena}{Antena}}*\ ListaAntenas(\mbox{\hyperlink{struct_antena}{Antena}}*\ lista,\ \textcolor{keywordtype}{int}*\ num\_antenas);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \mbox{\hyperlink{struct_antena}{Antena}}*\ CalculaNefasto(\mbox{\hyperlink{struct_antena}{Antena}}*\ lista);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{bool}\ GravaAntenasBinario(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nome\_ficheiro,\ \mbox{\hyperlink{struct_antena}{Antena}}*\ lista);}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#pragma\ endregion}}
+
+\end{DoxyCode}
