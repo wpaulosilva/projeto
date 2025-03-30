@@ -22,12 +22,12 @@ doxygen ./Doxyfile
 
 ```[bash]
 cd ./src
-make all
+make
 ```
 
 ## Executar
 
 ```[bash]
 cd ./src
-./prog
+make run
 ```s
