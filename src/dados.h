@@ -1,5 +1,5 @@
 /**
- * @file main.c
+ * @file dados.c
  * @author Paulo Silva (a31506@alunos.ipca.pt)
  * @brief Declaração de dados
  * @version 0.1
