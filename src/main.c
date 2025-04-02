@@ -13,7 +13,7 @@
 #include "dados.h"
 
 int main() {
-    Antena* lista = NULL; // Inicia a lista das antenas
+    Antena* lista = NULL;
     lista = LerAntenas("antenas.txt", lista);
 
     #pragma region Inserir Antena
