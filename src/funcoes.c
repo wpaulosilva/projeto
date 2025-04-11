@@ -94,7 +94,7 @@
          a = a->next;
      }
      nova->next = a->next;
-     a->next = nova; //atualiza o a 
+     a->next = nova;
      return lista;
  }
  #pragma endregion
@@ -182,51 +182,73 @@
   * @return Lista de antenas com efeito nefasto
   */
  Antena* CalculaNefasto(Antena* lista) {
-     printf("\nEfeito nefasto:\n");
- 
-     for (Antena* a = lista; a != NULL; a = a->next) {
-         for (Antena* b = a->next; b != NULL; b = b->next) {
-             if (a->frequencia == b->frequencia) {
-                 if (a->x == b->x && abs(a->y - b->y) == 2) { // vertical
-                     int aux = a->y;
-                     
-                     if (a->y < b->y) {
-                         a->y = a->y - 2;
-                     } else {
-                         a->y = a->y + 2;
-                     }
-                     
-                     if (aux < b->y) {
-                         b->y = b->y + 2;
-                     } else {
-                         b->y = b->y - 2;
-                     }
-                 
-                     printf("Vertical: (%d, %d) e (%d, %d)\n", a->x, a->y, b->x, b->y);
-                 } 
-                 else if (a->y == b->y && abs(a->x - b->x) == 2) { // horizontal
-                     int aux = a->x;
-                     
-                     if (a->x < b->x) {
-                         a->x = a->x - 2;
-                     } else {
-                         a->x = a->x + 2;
-                     }
-                     
-                     if (aux < b->x) {
-                         b->x = b->x + 2;
-                     } else {
-                         b->x = b->x - 2;
-                     }
-                 
-                     printf("Horizontal: (%d, %d) e (%d, %d)\n", a->x, a->y, b->x, b->y);
-                 }
-             }
-         }
-     }
- 
-     return lista;
- }
+    int tamanho = 2;
+
+    for (Antena* a = lista; a != NULL; a = a->next) {
+        for (Antena* b = a->next; b != NULL; b = b->next) {
+            if (a->frequencia == b->frequencia) {
+                // Vertical
+                if (a->x == b->x && abs(a->y - b->y) == tamanho) {
+                    int aux = a->y;
+                    if (a->y < b->y) {
+                        a->y -= tamanho;
+                        b->y += tamanho;
+                    } else {
+                        a->y += tamanho;
+                        b->y -= tamanho;
+                    }
+                    // printf("Vertical: (%d, %d) e (%d, %d)\n", a->x, a->y, b->x, b->y);
+                } 
+                // Horizontal
+                else if (a->y == b->y && abs(a->x - b->x) == tamanho) {
+                    int aux = a->x;
+                    if (a->x < b->x) {
+                        a->x -= tamanho;
+                        b->x += tamanho;
+                    } else {
+                        a->x += tamanho;
+                        b->x -= tamanho;
+                    }
+                    // printf("Horizontal: (%d, %d) e (%d, %d)\n", a->x, a->y, b->x, b->y);
+                } 
+                // Diagonal principal
+                else if (abs(a->x - b->x) == tamanho && abs(a->y - b->y) == tamanho &&
+                         (a->x - b->x) == (a->y - b->y)) {
+                    if (a->x < b->x) {
+                        a->x -= tamanho;
+                        a->y -= tamanho;
+                        b->x += tamanho;
+                        b->y += tamanho;
+                    } else {
+                        a->x += tamanho;
+                        a->y += tamanho;
+                        b->x -= tamanho;
+                        b->y -= tamanho;
+                    }
+                    // printf("Diagonal (\\): (%d, %d) e (%d, %d)\n", a->x, a->y, b->x, b->y);
+                }
+                // Diagonal secundária
+                else if (abs(a->x - b->x) == tamanho && abs(a->y - b->y) == tamanho &&
+                         (a->x - b->x) == -(a->y - b->y)) {
+                    if (a->x < b->x) {
+                        a->x -= tamanho;
+                        a->y += tamanho;
+                        b->x += tamanho;
+                        b->y -= tamanho;
+                    } else {
+                        a->x += tamanho;
+                        a->y -= tamanho;
+                        b->x -= tamanho;
+                        b->y += tamanho;
+                    }
+                    // printf("Diagonal (/): (%d, %d) e (%d, %d)\n", a->x, a->y, b->x, b->y);
+                }
+            }
+        }
+    }
+    return lista;
+}
+
  #pragma endregion
  
  #pragma region LerAntenas

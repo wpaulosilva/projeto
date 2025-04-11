@@ -1,5 +1,5 @@
 /**
- * @file dados.c
+ * @file dados.h
  * @author Paulo Silva (a31506@alunos.ipca.pt)
  * @brief Declaração de dados
  * @version 0.1
@@ -42,6 +42,7 @@ Antena* CriaAntena(char frequencia, int x, int y);
 Antena* ProcuraAntena(Antena* lista, int x, int y);
 Antena* InsereOrdenado(Antena* lista, char frequencia, int x, int y);
 Antena* ListaAntenas(Antena* lista, int* num_antenas);
+Antena* RemoveAntena(Antena* lista, int x, int y);
 
 /**
  * @brief Declaração da função para calcular o efeito nefasto
