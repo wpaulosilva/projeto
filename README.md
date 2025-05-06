@@ -17,7 +17,7 @@ Estruturas de Dados Avançados
 doxygen ./Doxyfile
 ```
 
-## Compilar o código fonte
+## Compilar o código
 
 ```[bash]
 cd ./src
