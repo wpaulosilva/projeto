@@ -17,7 +17,7 @@ int main() {
     lista = LerAntenas("antenas.txt", lista);
 
     #pragma region Inserir Antena
-    //lista = InsereOrdenado(lista, 'A', 3, 4);
+    // lista = InsereOrdenado(lista, 'A', 5, 7);
     #pragma endregion
 
     #pragma region Remover Antena
@@ -26,19 +26,28 @@ int main() {
 
     #pragma region Listar Antena
 
-    printf("Lista de antenas:\n");
+    printf("Antenas:\n");
     for (Antena* a = lista; a != NULL; a = a->next) {
-        printf("Frequência: %c, Posição: (%d, %d)\n", a->frequencia, a->x, a->y);
+        printf("Tipo: %c, Coordenadas: (%d, %d)\n", a->frequencia, a->x, a->y);
     }
     
     #pragma endregion
     
     #pragma region Calculo do Nefasto
-    CalculaNefasto(lista);
+    lista = CalculaNefasto(lista);   
     #pragma endregion
 
     #pragma region Gravação das Antenas
     GravaAntenasBinario("antenas2.bin", lista);
+    #pragma endregion
+
+    #pragma region Ler ficheiro binário 
+    Antena* listaBinario = LerAntenasBinario("antenas2.bin");
+
+    printf("\nLista:\n");
+    for (Antena* a = listaBinario; a != NULL; a = a->next) {
+        printf("Tipo: %c, Coordenadas: (%d, %d)\n", a->frequencia, a->x, a->y);
+    }
     #pragma endregion
 
     return 0;

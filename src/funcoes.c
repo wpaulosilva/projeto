@@ -150,11 +150,11 @@
  
  Antena* ListaAntenas(Antena* lista, int* num_antenas) {
      *num_antenas = 0;
-     Antena* atual = lista;
+     Antena* aux = lista;
  
-     while (atual) {
+     while (aux) {
          (*num_antenas)++;
-         atual = atual->next;
+         aux = aux->next;
      }
  
      Antena* resultado;
@@ -162,9 +162,9 @@
  
      if (!resultado) return NULL;
  
-     atual = lista;
-     for (int i = 0; atual; atual = atual->next, i++) {
-         resultado[i] = *atual;
+     aux = lista;
+     for (int i = 0; aux; aux = aux->next, i++) {
+         resultado[i] = *aux;
      }
  
      return resultado;
@@ -175,9 +175,6 @@
  
  /**
   * @brief Calcula as antenas com efeito nefasto
-  * Quando tem duas antenas da mesma frequência na mesma coluna, a com menos valor tira dois e na maior soma mais 2
-  * Quando tem duas antenas da mesma frequência na mesma linha, a com menos valor tira dois e na maior soma mais 2
-  * 
   * @param lista Lista de antenas
   * @return Lista de antenas com efeito nefasto
   */
@@ -187,68 +184,73 @@
     for (Antena* a = lista; a != NULL; a = a->next) {
         for (Antena* b = a->next; b != NULL; b = b->next) {
             if (a->frequencia == b->frequencia) {
-                // Vertical
+                int novoX, novoY;
+
                 if (a->x == b->x && abs(a->y - b->y) == tamanho) {
-                    int aux = a->y;
                     if (a->y < b->y) {
-                        a->y -= tamanho;
-                        b->y += tamanho;
+                        novoY = a->y - tamanho;
+                        lista = InsereOrdenado(lista, '#', a->x, novoY);
+                        novoY = b->y + tamanho;
+                        lista = InsereOrdenado(lista, '#', b->x, novoY);
                     } else {
-                        a->y += tamanho;
-                        b->y -= tamanho;
+                        novoY = a->y + tamanho;
+                        lista = InsereOrdenado(lista, '#', a->x, novoY);
+                        novoY = b->y - tamanho;
+                        lista = InsereOrdenado(lista, '#', b->x, novoY);
                     }
-                    // printf("Vertical: (%d, %d) e (%d, %d)\n", a->x, a->y, b->x, b->y);
                 } 
-                // Horizontal
                 else if (a->y == b->y && abs(a->x - b->x) == tamanho) {
-                    int aux = a->x;
                     if (a->x < b->x) {
-                        a->x -= tamanho;
-                        b->x += tamanho;
+                        novoX = a->x - tamanho;
+                        lista = InsereOrdenado(lista, '#', novoX, a->y);
+                        novoX = b->x + tamanho;
+                        lista = InsereOrdenado(lista, '#', novoX, b->y);
                     } else {
-                        a->x += tamanho;
-                        b->x -= tamanho;
+                        novoX = a->x + tamanho;
+                        lista = InsereOrdenado(lista, '#', novoX, a->y);
+                        novoX = b->x - tamanho;
+                        lista = InsereOrdenado(lista, '#', novoX, b->y);
                     }
-                    // printf("Horizontal: (%d, %d) e (%d, %d)\n", a->x, a->y, b->x, b->y);
                 } 
-                // Diagonal principal
-                else if (abs(a->x - b->x) == tamanho && abs(a->y - b->y) == tamanho &&
-                         (a->x - b->x) == (a->y - b->y)) {
+                else if (abs(a->x - b->x) == tamanho && abs(a->y - b->y) == tamanho && (a->x - b->x) == (a->y - b->y)) {
                     if (a->x < b->x) {
-                        a->x -= tamanho;
-                        a->y -= tamanho;
-                        b->x += tamanho;
-                        b->y += tamanho;
+                        novoX = a->x - tamanho;
+                        novoY = a->y - tamanho;
+                        lista = InsereOrdenado(lista, '#', novoX, novoY);
+                        novoX = b->x + tamanho;
+                        novoY = b->y + tamanho;
+                        lista = InsereOrdenado(lista, '#', novoX, novoY);
                     } else {
-                        a->x += tamanho;
-                        a->y += tamanho;
-                        b->x -= tamanho;
-                        b->y -= tamanho;
+                        novoX = a->x + tamanho;
+                        novoY = a->y + tamanho;
+                        lista = InsereOrdenado(lista, '#', novoX, novoY);
+                        novoX = b->x - tamanho;
+                        novoY = b->y - tamanho;
+                        lista = InsereOrdenado(lista, '#', novoX, novoY);
                     }
-                    // printf("Diagonal (\\): (%d, %d) e (%d, %d)\n", a->x, a->y, b->x, b->y);
                 }
-                // Diagonal secundária
-                else if (abs(a->x - b->x) == tamanho && abs(a->y - b->y) == tamanho &&
-                         (a->x - b->x) == -(a->y - b->y)) {
+                else if (abs(a->x - b->x) == tamanho && abs(a->y - b->y) == tamanho && (a->x - b->x) == -(a->y - b->y)) {
                     if (a->x < b->x) {
-                        a->x -= tamanho;
-                        a->y += tamanho;
-                        b->x += tamanho;
-                        b->y -= tamanho;
+                        novoX = a->x - tamanho;
+                        novoY = a->y + tamanho;
+                        lista = InsereOrdenado(lista, '#', novoX, novoY);
+                        novoX = b->x + tamanho;
+                        novoY = b->y - tamanho;
+                        lista = InsereOrdenado(lista, '#', novoX, novoY);
                     } else {
-                        a->x += tamanho;
-                        a->y -= tamanho;
-                        b->x -= tamanho;
-                        b->y += tamanho;
+                        novoX = a->x + tamanho;
+                        novoY = a->y - tamanho;
+                        lista = InsereOrdenado(lista, '#', novoX, novoY);
+                        novoX = b->x - tamanho;
+                        novoY = b->y + tamanho;
+                        lista = InsereOrdenado(lista, '#', novoX, novoY);
                     }
-                    // printf("Diagonal (/): (%d, %d) e (%d, %d)\n", a->x, a->y, b->x, b->y);
                 }
             }
         }
     }
     return lista;
 }
-
  #pragma endregion
  
  #pragma region LerAntenas
@@ -302,4 +304,29 @@
      fclose(ficheiro);
      return true;
  }
+ #pragma endregion
+
+ #pragma region LerFicheiroBin
+
+ /**
+  * @brief Lê as antenas do ficheiro binário
+  * @return Lista ligada de antenas
+  */
+ Antena* LerAntenasBinario(const char* nome_ficheiro) {
+     FILE* fp;
+     Antena* lista = NULL;
+     Antena* nova;
+ 
+     if ((fp = fopen(nome_ficheiro, "rb")) == NULL) return NULL;
+ 
+     AntenaFile auxAntena;
+     while (fread(&auxAntena, sizeof(AntenaFile), 1, fp)) {
+         nova = CriaAntena(auxAntena.frequencia, auxAntena.x, auxAntena.y);
+         lista = InsereOrdenado(lista, nova->frequencia, nova->x, nova->y);
+     }
+ 
+     fclose(fp);
+     return lista;
+ }
+ 
  #pragma endregion

@@ -54,4 +54,10 @@ Antena* CalculaNefasto(Antena* lista);
  * @return Verdadeiro se a gravação for feita
  */
 bool GravaAntenasBinario(const char* nome_ficheiro, Antena* lista);
+
+/**
+ * @brief Declaração da função ler o ficheiro binário
+ */
+Antena* LerAntenasBinario(const char* nome_ficheiro);
+
 #pragma endregion

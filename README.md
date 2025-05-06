@@ -11,7 +11,7 @@ Estruturas de Dados Avançados
 
 ## Organização
 
-[src/](./src/)  Código da solução desenvolvida e documentação
+[src/](./src/)  Código desenvolvido e documentação
 ## Gerar documentação do código
 
 ```[bash]
@@ -30,4 +30,4 @@ make
 ```[bash]
 cd ./src
 make run
-```s
+```
