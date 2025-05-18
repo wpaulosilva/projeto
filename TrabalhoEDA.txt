@@ -6,23 +6,21 @@ Fase1:
 
 Melhorias Fase1:
 Código:
--Meter as funções mais simples 
 -Tirar todos os prints ✔️
 -Meter o nefasto também na diagonal ✔️
 -Meter o nefasto como aquela cena sem ser o dois(uma variável) ✔️
 -Mensagens -> na cena das mensagens meter por línguas algo como printf(messa(50,pt)); qualquer cena assim ou meter no ficheiro texto e so chamar a linha tipo isso
 
------------
-Relatório: - Sexta Feira
--Meter imagens como por exemplo como funciona a lista, como insere no meio das outras(meter uma de cada lado, como na aula) ✔️
--Meter texto mais ricos✔️
--Meter uma imagem do caderno onde foram pensados como fazer o efeito nefasto✔️
--Seguir os passos da estrutura do moodle✔️
--Meter bibliografia daquelas automáticas✔️
--Estruturar por:
-	-Introdução(motivação, tema, objetivos, metodologia, plano de trabalho, estrutura)✔️
-	-Desenvolvimento()✔️
-	-Implementação✔️
-	-Conclusão✔️
 
+Fase2:
+1- Estruta para guardar os vertices (antenas) ✔️
+2- Arestas sao as que tem a mesma frequencia tipo A-A1-A2 B-B1-B2-B3 C D-D1-D2 
+3- Podia meter um codigo para cada antena para facilitar
+4- Na struct antena ter o visitado para nao repetir ✔️
+5- Usar parecido da fase ler txt e guardar binario, e tambem meter o nefasto
 
+Operacoes: 
+a. Procura em profundidade a partir de uma determinada antena, listando na consola as coordenadas das antenas alcançadas; 
+b. Procura em largura a partir de uma determinada antena, listando na consola as coordenadas das antenas alcançadas;
+c. Identificar todos os caminhos possíveis entre duas determinadas antenas, listando na consola as sequência de arestas interligando as antenas;
+d. Dadas duas frequências de ressonância distintas A e B, listar na consola todas as intersecções de pares de antenas com ressonância A e B, indicando as respectivas coordenadas.

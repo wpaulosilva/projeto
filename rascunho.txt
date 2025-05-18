@@ -1,0 +1,62 @@
+---Largura: 
+Fila representa cada elemento da Fila
+Fila2 guarda o inicio e o fim 
+
+Criar Fila: Criar um novo no da fila
+-Reserva a memoria para o elemento da fila
+-Retorna o ponteiro do novo no
+
+Adicionar Fila: Adicionar uma nova antena a fila
+-Se a fila estiver vazia, mete o inicio e fim com o novo elemento
+-Senão, mete no fim da fila e atualiza
+
+Remover Fila: Remover o no mais antigo da fila e retonar a antena
+-Guarda o no inicial na variavel aux
+-Se a fila depois de remover fica null
+
+Tirar Visitado: Marcar todas as antenas do grafo como nao visitadas
+-Percorrer todas as antenas da lista 
+-Defenir o campo marcado como false para cada antena
+
+Largura: Percurrer o grafo em largura e retornar a ordem
+-Primeiro mete nao visitado em todas as antenas
+-Depois comeca com uma fila vazia
+Enquanto a fila nao estiver vazia:
+-Remove a proxima antena da fila
+-Se a antena nao foi visitada, Mete visitada, e adiciona a lista
+Se o adjacente nao foi visitado, mete na fila 
+Depois retorna a ordem
+
+========================================================
+
+---Profundidade:
+Profundidade: Guardar as antenas visitadas na lista
+
+Adicionar Profundidade: Adicionar uma antena a lista:
+-Aloca memoria para um novo no da lista
+-Percorre a lista ate ao ultimo e adiciona o novo no fim
+-Retorna a lista atualizada
+
+Visitar Profundidade: Realizar a profundidade a partide uma certa antena
+-Marca a antena atual como visitada
+-Adiciona a antena atual a lista
+-Para cada adjacente nao visitado, vai recursivamente
+-Retorna a lista atualizada
+
+========================================================
+
+---Caminhos
+Caminho - Guarda um caminho individual na lista
+ListaCaminhos - Guarda todos os caminhos encontrados
+
+Marca a antena atual como visitada
+Adiciona a antena atual ao caminho
+Se a antena atual for a final - O caminho ta feito e mete no lista caminhos
+Senao percorre as adjacentes da antena atual, visita os adjacentes
+
+
+===========Executar com a biblioteca====================
+
+gcc -shared -o libminhaBiblioteca.dll src/funcoes.o
+gcc main/main.c -L. -lminhaBiblioteca -o programa
+.\programa
