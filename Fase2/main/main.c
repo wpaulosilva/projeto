@@ -7,19 +7,32 @@ int main() {
     lista = LerAntenas("antenas.txt", lista);
 
     #pragma region Inserir Antena
-    lista = InserirAntena(lista, 'A', 5, 7);
+    // lista = InserirAntena(lista, 'A', 5, 7);
+    lista = InserirAntena(lista, 'B', 9, 7);
     #pragma endregion
 
     #pragma region Remover Antena
-    lista = RemoveAntena(lista, 9, 5);
+    // lista = RemoveAntena(lista, 9, 5);
     #pragma endregion
 
     #pragma region Calcular Nefasto
     lista = CalculaNefasto(lista);   
     #pragma endregion
 
-    #pragma region Criar Grafo
+    Antena* origem = ProcuraAntena(lista, 7,1 );
+    Antena* destino = ProcuraAntena(lista, 9, 7);
+
+    #pragma region Criar Aresta
+    InserirAresta(origem, destino);
+    #pragma endregion
+
     lista = CriarGrafo(lista);
+
+    #pragma region Remover Aresta
+    RemoverAresta(origem, destino);
+    #pragma endregion
+
+    #pragma region Mostrar Grafo
 
     printf("\nGrafo:\n");
     for (Antena* a = lista; a != NULL; a = a->next) {
@@ -29,37 +42,21 @@ int main() {
         }
     }
     printf("\n");
-
     #pragma endregion
 
-    int origemX = 5; 
-    int origemY = 0;
-
-    Antena* origem = ProcuraAntena(lista, origemX, origemY);
-
-    #pragma region Largura
-
-    tirarVisitado(lista);   
-    Antena* resultadoLargura = Largura(lista, origem);
-
-    printf("\nLargura:\n", origemX, origemY);
-    for (Antena* a = resultadoLargura; a != NULL; a = a->next) {
-        printf("Tipo: %c, Coordenadas: (%d, %d)\n", a->frequencia, a->x, a->y);
-    }
-
-    #pragma endregion
-    
     #pragma region Profundidade
+    
+    Profundidade* listaProf = NULL;
+    listaProf = verProfundidade(origem, listaProf);
 
-    Profundidade* listaProfundidade = NULL;
-    listaProfundidade = visitarProfundidade(origem, listaProfundidade);
-
-    Profundidade* temp = listaProfundidade;
-    while (temp != NULL) {
-        printf("Tipo: %c, Coordenadas: (%d, %d)\n", temp->antena->frequencia, temp->antena->x, temp->antena->y);
-        temp = temp->prox;
-    }
-
+    Profundidade* aux = listaProf;
+    
+    while (aux != NULL) {
+        // printf("Ola");
+        printf("Tipo: %c, Coordenadas: (%d, %d)\n", aux->antena->frequencia, aux->antena->x, aux->antena->y);
+        aux = aux->prox;
+    }       
+  
     #pragma endregion
 
     #pragma region Gravar Antenas

@@ -55,27 +55,7 @@ typedef struct {
 } ArestaFile;
 
 /**
- * @brief Estrutura para guardar as antenas na fila.
- * 
- * Contém um ponteiro para a antena e um ponteiro para a próxima antena na fila
- */
-typedef struct Fila {
-    Antena* antena;
-    struct Fila* seguinte;
-} Fila;
-
-/**
- * @brief Estrutura para guardar a fila de antenas.
- * 
- * Contém ponteiros para o início e o fim da fila
- */
-typedef struct Fila2 {
-    Fila* inicio;
-    Fila* fim;
-} Fila2;
-
-/**
- * @brief Estrutura para guardar os caminhos encontrados na busca profundidade.
+ * @brief Estrutura para guardar os caminhos na profundidade.
  * 
  * Contém um ponteiro para a antena e um ponteiro para o próximo caminho
  */	
@@ -85,7 +65,7 @@ typedef struct Profundidade {
 } Profundidade;
 
 /**
- * @brief Estrutura para guardar os caminhos encontrados na busca profundidade.
+ * @brief Estrutura para guardar os caminhos na profundidade.
  * 
  * Contém um ponteiro para a antena e um ponteiro para o próximo caminho
  */
@@ -95,7 +75,7 @@ typedef struct Caminho {
 } Caminho;
 
 /**
- * @brief Estrutura para guardar os caminhos encontrados na busca profundidade.
+ * @brief Estrutura para guardar os caminhos na profundidade.
  * 
  * Contém um ponteiro para o caminho completo (lista de antenas) e um ponteiro para o próximo caminho
  */
@@ -124,7 +104,7 @@ Antena* CalculaNefasto(Antena* lista);
 /**
  * @brief Declaração da função para criar arestas
  */
-Adj* CriarAresta(Antena* destino, bool* validar);
+Adj* CriarAresta(Antena* destino);
 
 /**
  * @brief Declaração da função para inserir arestas
@@ -132,8 +112,7 @@ Adj* CriarAresta(Antena* destino, bool* validar);
  * Recebe o ponteiro para a antena de início, a aresta a inserir e um ponteiro para validação
  * Retorna a lista de adjacências atualizada
  */
-Adj* InserirAresta(Antena* inicio, Adj* aresta, bool* validar);
-
+Adj* InserirAresta(Antena* inicio, Antena* destino);
 /**
  * @brief Declaração da função para criar o grafo
  * 
@@ -143,22 +122,12 @@ Adj* InserirAresta(Antena* inicio, Adj* aresta, bool* validar);
 Antena* CriarGrafo(Antena* lista);
 
 /**
- * @brief Meter as antenas como nao visitadas
+ * @brief Declaração da função para remover arestas
  * 
- * @param inicio 
- * @return true 
- * @return false 
+ * Recebe o ponteiro para a antena de início e o ponteiro para a antena de destino
+ * Retorna true se a aresta foi removida com sucesso, false caso contrário
  */
-bool tirarVisitado(Antena* inicio);
-
-/**
- * @brief Guardar a ordem das antenas visitadas
- * 
- * @param grafo 
- * @param origem 
- * @return Antena* 
- */
-Antena* Largura(Antena* grafo, Antena* origem);
+bool RemoverAresta(Antena* inicio, Antena* destino);
 
 /**
  * @brief Realizar a profundidade a partide uma certa antena
@@ -167,7 +136,7 @@ Antena* Largura(Antena* grafo, Antena* origem);
  * @param profundidade 
  * @return Profundidade* 
  */
-Profundidade* visitarProfundidade(Antena* atual, Profundidade* profundidade);
+Profundidade* verProfundidade(Antena* atual, Profundidade* profundidade);
 
 /**
  * @brief Adicionar uma antena a lista:
@@ -177,6 +146,11 @@ Profundidade* visitarProfundidade(Antena* atual, Profundidade* profundidade);
  * @return Profundidade* 
  */
 Profundidade* adicionarAProfundidade(Profundidade* profundidade, Antena* antena);
+
+/**
+ * @brief Declaração da função para ver os caminhos
+ */
+ListaCaminhos* Caminhos(Antena* atual, Antena* fim, Caminho* caminhoAtual, ListaCaminhos* listaCaminhos);
 
 /**
  * @brief Declaração da função para guardar no ficheiro binário

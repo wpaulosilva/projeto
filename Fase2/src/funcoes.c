@@ -274,7 +274,7 @@
  
  #pragma endregion
  
-#pragma region Criar Aresta
+#pragma region Criar Arestas
  /**
  * @brief Cria uma nova aresta
  * 
@@ -285,18 +285,18 @@
  * @param validar Validação
  * @return Nova aresta criada
  */
-Adj* CriarAresta(Antena* destino, bool* validar) {
+Adj* CriarAresta(Antena* destino) {
     
     Adj* aux; 
     aux = (Adj*)malloc(sizeof(Adj));
-
-    if (aux) {
-        aux->destino = destino;
-        aux->prox = NULL;
-        *validar = true;
-    } else {
-        *validar = false;
+    
+    if (aux == NULL) {
+        return NULL;
     }
+
+    aux->destino = destino;
+    aux->prox = NULL;
+
     return aux;
 }
 #pragma endregion
@@ -313,27 +313,35 @@ Adj* CriarAresta(Antena* destino, bool* validar) {
  * @param validar Validação
  * @return Lista de adjacências atualizada
  */
-Adj* InserirAresta(Antena* inicio, Adj* aresta, bool* validar) {
+Adj* InserirAresta(Antena* inicio, Antena* destino) {
     
-    if (aresta == NULL || inicio == NULL) {
-        *validar = false;
+    if(inicio == NULL){
         return NULL;
     }
 
+    if(destino == NULL){
+        return NULL;
+    }
+
+    Adj* novaAresta = (Adj*)malloc(sizeof(Adj));
+    
+    if (novaAresta == NULL){
+        return NULL;
+    }
+
+    novaAresta->destino = destino;
+    novaAresta->prox = NULL;
+
     if (inicio->adj == NULL) {
-        inicio->adj = aresta;
-        *validar = true;
-        return aresta;
+        inicio->adj = novaAresta;
+    } else {
+        Adj* aux = inicio->adj;
+        while (aux->prox != NULL) {
+            aux = aux->prox;
+        }
+        aux->prox = novaAresta;
     }
-
-    Adj* aux = inicio->adj;
-    while (aux->prox != NULL) {
-        aux = aux->prox;
-    }
-    aux->prox = aresta;
-
-    *validar = true;
-    return inicio->adj;
+    return novaAresta;
 }
 
 #pragma endregion
@@ -353,175 +361,63 @@ Adj* InserirAresta(Antena* inicio, Adj* aresta, bool* validar) {
  */
 
 Antena* CriarGrafo(Antena* lista) {
-    if (lista == NULL){
-        return NULL;
-    }
+    if (lista == NULL) return NULL;
 
     Antena* aux = lista;
-    bool ok;
 
     while (aux != NULL) {
-        Antena* comparar = lista;
+        Antena* aux2 = lista;
         
-        while (comparar != NULL) {
-            if (comparar != aux && comparar->frequencia == aux->frequencia) {
-                Adj* aresta = CriarAresta(comparar, &ok);
-                if (ok) {
-                    InserirAresta(aux, aresta, &ok);
-                }
+        while (aux2 != NULL) {
+            if (aux2 != aux && aux2->frequencia == aux->frequencia) {
+                InserirAresta(aux, aux2);
             }
-            comparar = comparar->next;
+            aux2 = aux2->next;
         }
         aux = aux->next;
     }
     return lista;
 }
 
+
 #pragma endregion
 
-#pragma region Largura
-
+#pragma region Remover Aresta
 /**
- * @brief Cria uma nova fila com uma antena
+ * @brief Remove uma aresta entre duas antenas
  * 
- * Recebe um ponteiro para a antena
- * Retorna um ponteiro para a nova fila criada
+ * Recebe o ponteiro para a antena de início e o ponteiro para a antena de destino
+ * Retorna true se a aresta foi removida com sucesso, false caso contrário
  * 
- * @param antena Ponteiro para a antena
- * @return Ponteiro para o inicio da fila criada
+ * @param inicio Ponteiro para a antena de início
+ * @param destino Ponteiro para a antena de destino
+ * @return true se a aresta foi removida com sucesso, false caso contrário
  */
-Fila* criarFila(Antena* antena) {
-    Fila* aux = (Fila*)malloc(sizeof(Fila));
-    
-    if (aux == NULL){
-        return NULL;    
-    }
-    
-    aux->antena = antena;
-    aux->seguinte = NULL;
-    return aux;
-}
-
-/**
- * @brief Adiciona uma antena à fila
- * 
- * Recebe um ponteiro para a fila e um ponteiro para a antena
- * Retorna true se adicionou com sucesso, false caso contrário
- * 
- * @param fila Ponteiro para a estrutura da fila
- * @param antena Ponteiro para a antena a adicionar
- * @return true se adicionou com sucesso, false caso contrário
- */
-bool adicionarFila(Fila2* fila, Antena* antena) {
-    
-    Fila* aux; 
-    aux = criarFila(antena);
-    
-    if (aux == NULL){
+bool RemoverAresta(Antena* inicio, Antena* destino) {
+    if (inicio == NULL || destino == NULL || inicio->adj == NULL) {
         return false;
     }
 
-    if (fila->inicio == NULL) {
-        fila->inicio = fila->fim = aux;
-    } else {
-        fila->fim->seguinte = aux;
-        fila->fim = aux;
-    }
-    return true;
-}
+    Adj* aux = inicio->adj;
+    Adj* aux2 = NULL;
 
-/**
- * @brief Remove uma antena da fila
- * 
- * Recebe um ponteiro para a fila
- * Retorna o ponteiro para a antena removida
- * 
- * @param fila Ponteiro para a estrutura da fila
- * @return Ponteiro para a antena removida, NULL se fila vazia
- */
-Antena* removerFila(Fila2* fila) {
-    
-    if (fila->inicio == NULL){
-        return NULL;
-    }
-
-    Fila* aux;
-    aux = fila->inicio;
-
-    Antena* aux2 = aux->antena;
-    fila->inicio = aux->seguinte;
-    if (fila->inicio == NULL) {
-        fila->fim = NULL;
-    }
-    free(aux);
-    return aux2;
-}
-
-/**
- * @brief Marca todas as antenas do grafo como não visitadas
- * 
- * Recebe o ponteiro para a lista de antenas
- * Retorna true se todas as antenas ainda nao forem visitadas, false se a lista estiver vazia
- * 
- * @param inicio Ponteiro para a lista ligada de antenas
- */
-bool tirarVisitado(Antena* inicio) {
-    if (inicio == NULL){
-        return false;
-    }
-
-    for (Antena* aux = inicio; aux != NULL; aux = aux->next) {
-        aux->marcado = false;
-    }
-    return true;
-}
-
-/**
- * @brief Busca em largura (BFS) no grafo a partir de uma antena origem
- * 
- * @param grafo Ponteiro para o grafo
- * @param origem Ponteiro para a antena de origem
- * @return Lista ligada de antenas visitadas
- */
-Antena* Largura(Antena* grafo, Antena* origem) {
-    
-    if (grafo == NULL || origem == NULL){
-        return NULL;
-    }
-
-    tirarVisitado(grafo);
-
-    Fila2 fila = { NULL, NULL };
-
-    adicionarFila(&fila, origem);
-
-    Antena* listaInicio = NULL;
-    Antena* listaFim = NULL;
-
-    while (fila.inicio != NULL) {
-        Antena* aux = removerFila(&fila);
-
-        if (!aux->marcado) {
-            aux->next = NULL;
-            if (listaInicio == NULL) {
-                listaInicio = listaFim = aux;
+    while (aux != NULL) {
+        if (aux->destino == destino) {
+            // Encontrou a aresta a remover
+            if (aux2 == NULL) {
+                // A aresta a remover é a primeira da lista
+                inicio->adj = aux->prox;
             } else {
-                listaFim->next = aux;
-                listaFim = aux;
+                // Aresta está no meio ou fim da lista
+                aux2->prox = aux->prox;
             }
-
-            aux->marcado = true;
-
-            // Percorre todos os adjacentes não visitados
-            for (Adj* adjacente = aux->adj; adjacente != NULL; adjacente = adjacente->prox) {
-                if (!adjacente->destino->marcado) {
-                    adicionarFila(&fila, adjacente->destino);
-                }
-            }
+            free(aux);
+            return true;  // Remoção feita com sucesso
         }
+        aux2 = aux;
+        aux = aux->prox;
     }
-
-    return listaInicio;
+    return false; // Aresta não encontrada
 }
 
 #pragma endregion
@@ -530,6 +426,10 @@ Antena* Largura(Antena* grafo, Antena* origem) {
 
 /**
  * @brief Adiciona uma antena à lista de profundidade
+ * 
+ * Cria uma nova celula para guardar uma antena
+ * Adiciona no fim da lista
+ * Retorna a lista
  * 
  * Recebe o ponteiro para a lista de profundidade e um ponteiro para a antena
  * Retorna o ponteiro para a lista de profundidade atualizada
@@ -554,7 +454,7 @@ Profundidade* adicionarAProfundidade(Profundidade* profundidade, Antena* antena)
     }
 
     Profundidade* aux2 = profundidade;
-    while (aux2->prox != NULL) { //percorrer ate ao ultimo
+    while (aux2->prox != NULL) {
         aux2 = aux2->prox;
     }
     aux2->prox = aux;
@@ -565,28 +465,33 @@ Profundidade* adicionarAProfundidade(Profundidade* profundidade, Antena* antena)
 /**
  * @brief Visita as antenas em profundidade
  * 
+ * Mete a antena como visitada
+ * Adiciona a antena à lista
+ * Vai visitar todos os adjacentes nao visitados
+ * Retorna a lista
+ * 
  * Recebe o ponteiro para a antena atual e a lista de profundidade
  * Retorna a lista de profundidade atualizada
  * 
- * @param atual Ponteiro para a antena atual
+ * @param origem Ponteiro para a antena atual
  * @param profundidade Ponteiro para a lista de profundidade
  * @return Ponteiro para a lista de profundidade atualizada
  */
 
-Profundidade* visitarProfundidade(Antena* atual, Profundidade* profundidade) {
+Profundidade* verProfundidade(Antena* origem, Profundidade* profundidade) {
     
-    if (atual == NULL || atual->marcado){
+    if (origem == NULL || origem->marcado){
         return profundidade;
     }
 
     // printf("Debug: %c (%d, %d)\n", atual->frequencia, atual->x, atual->y); // debug
 
-    atual->marcado = true;
-    profundidade = adicionarAProfundidade(profundidade, atual);
+    origem->marcado = true;
+    profundidade = adicionarAProfundidade(profundidade, origem);
 
-    for (Adj* aux = atual->adj; aux != NULL; aux = aux->prox) {
+    for (Adj* aux = origem->adj; aux != NULL; aux = aux->prox) {
         if (!aux->destino->marcado) {
-            profundidade = visitarProfundidade(aux->destino, profundidade);
+            profundidade = verProfundidade(aux->destino, profundidade);
         }
     }
 
@@ -598,37 +503,38 @@ Profundidade* visitarProfundidade(Antena* atual, Profundidade* profundidade) {
 #pragma region Caminho
 
 /**
- * @brief Adiciona uma antena ao caminho.
+ * @brief Encontra todos os caminhos entre duas antenas
  * 
- * @param caminho Lista de caminhos.
- * @param antena Antena a adicionar.
- * @return Lista de caminhos atualizada.
+ * Recebe o ponteiro para a antena de origem, o ponteiro para a antena de destino, o caminho atual e a lista de caminhos
+ * Retorna a lista de caminhos encontrados
+ * 
+ * @param origem Ponteiro para a antena de origem
+ * @param destino Ponteiro para a antena de destino
+ * @param caminhoAtual Ponteiro para o caminho atual
+ * @param listaCaminhos Ponteiro para a lista de caminhos encontrados
+ * @return Lista de caminhos encontrados
  */
 
-ListaCaminhos* EncontrarCaminhos(Antena* atual, Antena* fim, Caminho* caminhoAtual, ListaCaminhos* listaCaminhos) {
+ListaCaminhos* Caminhos(Antena* origem, Antena* destino, Caminho* caminhoAtual, ListaCaminhos* listaCaminhos) {
     
-    if (atual == NULL){
+    if (origem == NULL){
         return listaCaminhos;
     }
 
-    atual->marcado = true;
+    origem->marcado = true;
 
     Caminho* aux = malloc(sizeof(Caminho));
-    aux->antena = atual;
+    aux->antena = origem;
     aux->prox = caminhoAtual;
     caminhoAtual = aux;
 
-    if (atual == fim) {
+    if (origem == destino) {
         ListaCaminhos* novoCaminho = malloc(sizeof(ListaCaminhos));
         novoCaminho->caminho = caminhoAtual;
         novoCaminho->prox = listaCaminhos;
         listaCaminhos = novoCaminho;
     } else {
-        for (Adj* adj = atual->adj; adj != NULL; adj = adj->prox) {
-            if (!adj->destino->marcado) {
-                listaCaminhos = EncontrarCaminhos(adj->destino, fim, caminhoAtual, listaCaminhos);
-            }
-        }
+        // falta a parte de percorrer o grafo
     }
 
     return listaCaminhos;
@@ -636,7 +542,7 @@ ListaCaminhos* EncontrarCaminhos(Antena* atual, Antena* fim, Caminho* caminhoAtu
 
 #pragma endregion
 
-#pragma region Gravar Antena
+#pragma region Gravar
  
  /**
   * @brief Grava as antenas no ficheiro antenas2.bin
