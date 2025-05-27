@@ -1,4 +1,4 @@
-\doxysection{Lista\+Caminhos Struct Reference}
+\doxysection{Referência à estrutura Lista\+Caminhos}
 \hypertarget{struct_lista_caminhos}{}\label{struct_lista_caminhos}\index{ListaCaminhos@{ListaCaminhos}}
 
 
@@ -9,22 +9,47 @@ Estrutura para guardar os caminhos na profundidade.
 
 {\ttfamily \#include $<$dados.\+h$>$}
 
-\doxysubsubsection*{Public Attributes}
+
+
+Diagrama de colaboração para Lista\+Caminhos\+:
+% FIG 0
+\doxysubsubsection*{Campos de Dados}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{struct_lista_caminhos_ae7025134b28b291d014563253eca2245}\label{struct_lista_caminhos_ae7025134b28b291d014563253eca2245} 
-\mbox{\hyperlink{struct_caminho}{Caminho}} \texorpdfstring{$\ast$}{*} {\bfseries caminho}
+\mbox{\hyperlink{struct_caminho}{Caminho}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_lista_caminhos_ae7025134b28b291d014563253eca2245}{caminho}}
 \item 
-\Hypertarget{struct_lista_caminhos_a8e230ce15049d6ec8aacddb66a9819f7}\label{struct_lista_caminhos_a8e230ce15049d6ec8aacddb66a9819f7} 
-struct \mbox{\hyperlink{struct_lista_caminhos}{Lista\+Caminhos}} \texorpdfstring{$\ast$}{*} {\bfseries prox}
+struct \mbox{\hyperlink{struct_lista_caminhos}{Lista\+Caminhos}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_lista_caminhos_a8e230ce15049d6ec8aacddb66a9819f7}{prox}}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Descrição detalhada}
 Estrutura para guardar os caminhos na profundidade. 
 
 Contém um ponteiro para o caminho completo (lista de antenas) e um ponteiro para o próximo caminho 
 
-The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Documentação dos campos e atributos}
+\Hypertarget{struct_lista_caminhos_ae7025134b28b291d014563253eca2245}\index{ListaCaminhos@{ListaCaminhos}!caminho@{caminho}}
+\index{caminho@{caminho}!ListaCaminhos@{ListaCaminhos}}
+\doxysubsubsection{\texorpdfstring{caminho}{caminho}}
+{\footnotesize\ttfamily \label{struct_lista_caminhos_ae7025134b28b291d014563253eca2245} 
+\mbox{\hyperlink{struct_caminho}{Caminho}}\texorpdfstring{$\ast$}{*} Lista\+Caminhos\+::caminho}
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_ae858713276a421f3e7afc36a1b3c9cb5}{Caminhos()}}.
+
+\Hypertarget{struct_lista_caminhos_a8e230ce15049d6ec8aacddb66a9819f7}\index{ListaCaminhos@{ListaCaminhos}!prox@{prox}}
+\index{prox@{prox}!ListaCaminhos@{ListaCaminhos}}
+\doxysubsubsection{\texorpdfstring{prox}{prox}}
+{\footnotesize\ttfamily \label{struct_lista_caminhos_a8e230ce15049d6ec8aacddb66a9819f7} 
+struct \mbox{\hyperlink{struct_lista_caminhos}{Lista\+Caminhos}}\texorpdfstring{$\ast$}{*} Lista\+Caminhos\+::prox}
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_ae858713276a421f3e7afc36a1b3c9cb5}{Caminhos()}}.
+
+
+
+A documentação para esta estrutura foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
 \item 
 src/\mbox{\hyperlink{dados_8h}{dados.\+h}}\end{DoxyCompactItemize}

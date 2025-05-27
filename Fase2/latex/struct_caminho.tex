@@ -1,4 +1,4 @@
-\doxysection{Caminho Struct Reference}
+\doxysection{Referência à estrutura Caminho}
 \hypertarget{struct_caminho}{}\label{struct_caminho}\index{Caminho@{Caminho}}
 
 
@@ -9,22 +9,47 @@ Estrutura para guardar os caminhos na profundidade.
 
 {\ttfamily \#include $<$dados.\+h$>$}
 
-\doxysubsubsection*{Public Attributes}
+
+
+Diagrama de colaboração para Caminho\+:
+% FIG 0
+\doxysubsubsection*{Campos de Dados}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{struct_caminho_af2377b122ae9e1f846e1947da38f3ab9}\label{struct_caminho_af2377b122ae9e1f846e1947da38f3ab9} 
-\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} {\bfseries antena}
+\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_caminho_af2377b122ae9e1f846e1947da38f3ab9}{antena}}
 \item 
-\Hypertarget{struct_caminho_a85e5891cda2c69e967b81c8f7bb69996}\label{struct_caminho_a85e5891cda2c69e967b81c8f7bb69996} 
-struct \mbox{\hyperlink{struct_caminho}{Caminho}} \texorpdfstring{$\ast$}{*} {\bfseries prox}
+struct \mbox{\hyperlink{struct_caminho}{Caminho}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_caminho_a85e5891cda2c69e967b81c8f7bb69996}{prox}}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Descrição detalhada}
 Estrutura para guardar os caminhos na profundidade. 
 
 Contém um ponteiro para a antena e um ponteiro para o próximo caminho 
 
-The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Documentação dos campos e atributos}
+\Hypertarget{struct_caminho_af2377b122ae9e1f846e1947da38f3ab9}\index{Caminho@{Caminho}!antena@{antena}}
+\index{antena@{antena}!Caminho@{Caminho}}
+\doxysubsubsection{\texorpdfstring{antena}{antena}}
+{\footnotesize\ttfamily \label{struct_caminho_af2377b122ae9e1f846e1947da38f3ab9} 
+\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}}\texorpdfstring{$\ast$}{*} Caminho\+::antena}
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_ae858713276a421f3e7afc36a1b3c9cb5}{Caminhos()}}.
+
+\Hypertarget{struct_caminho_a85e5891cda2c69e967b81c8f7bb69996}\index{Caminho@{Caminho}!prox@{prox}}
+\index{prox@{prox}!Caminho@{Caminho}}
+\doxysubsubsection{\texorpdfstring{prox}{prox}}
+{\footnotesize\ttfamily \label{struct_caminho_a85e5891cda2c69e967b81c8f7bb69996} 
+struct \mbox{\hyperlink{struct_caminho}{Caminho}}\texorpdfstring{$\ast$}{*} Caminho\+::prox}
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_ae858713276a421f3e7afc36a1b3c9cb5}{Caminhos()}}.
+
+
+
+A documentação para esta estrutura foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
 \item 
 src/\mbox{\hyperlink{dados_8h}{dados.\+h}}\end{DoxyCompactItemize}

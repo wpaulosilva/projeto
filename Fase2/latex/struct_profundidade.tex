@@ -1,4 +1,4 @@
-\doxysection{Profundidade Struct Reference}
+\doxysection{Referência à estrutura Profundidade}
 \hypertarget{struct_profundidade}{}\label{struct_profundidade}\index{Profundidade@{Profundidade}}
 
 
@@ -9,22 +9,47 @@ Estrutura para guardar os caminhos na profundidade.
 
 {\ttfamily \#include $<$dados.\+h$>$}
 
-\doxysubsubsection*{Public Attributes}
+
+
+Diagrama de colaboração para Profundidade\+:
+% FIG 0
+\doxysubsubsection*{Campos de Dados}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{struct_profundidade_aef062ce077bd7025326c8130851f1b97}\label{struct_profundidade_aef062ce077bd7025326c8130851f1b97} 
-\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} {\bfseries antena}
+\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_profundidade_aef062ce077bd7025326c8130851f1b97}{antena}}
 \item 
-\Hypertarget{struct_profundidade_a631d6a4ccd1210e3888596e61c51fc87}\label{struct_profundidade_a631d6a4ccd1210e3888596e61c51fc87} 
-struct \mbox{\hyperlink{struct_profundidade}{Profundidade}} \texorpdfstring{$\ast$}{*} {\bfseries prox}
+struct \mbox{\hyperlink{struct_profundidade}{Profundidade}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_profundidade_a631d6a4ccd1210e3888596e61c51fc87}{prox}}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Descrição detalhada}
 Estrutura para guardar os caminhos na profundidade. 
 
 Contém um ponteiro para a antena e um ponteiro para o próximo caminho 
 
-The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Documentação dos campos e atributos}
+\Hypertarget{struct_profundidade_aef062ce077bd7025326c8130851f1b97}\index{Profundidade@{Profundidade}!antena@{antena}}
+\index{antena@{antena}!Profundidade@{Profundidade}}
+\doxysubsubsection{\texorpdfstring{antena}{antena}}
+{\footnotesize\ttfamily \label{struct_profundidade_aef062ce077bd7025326c8130851f1b97} 
+\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}}\texorpdfstring{$\ast$}{*} Profundidade\+::antena}
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_a118b4ded2a82893eb06655b9627db904}{adicionar\+AProfundidade()}} e \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main()}}.
+
+\Hypertarget{struct_profundidade_a631d6a4ccd1210e3888596e61c51fc87}\index{Profundidade@{Profundidade}!prox@{prox}}
+\index{prox@{prox}!Profundidade@{Profundidade}}
+\doxysubsubsection{\texorpdfstring{prox}{prox}}
+{\footnotesize\ttfamily \label{struct_profundidade_a631d6a4ccd1210e3888596e61c51fc87} 
+struct \mbox{\hyperlink{struct_profundidade}{Profundidade}}\texorpdfstring{$\ast$}{*} Profundidade\+::prox}
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_a118b4ded2a82893eb06655b9627db904}{adicionar\+AProfundidade()}} e \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main()}}.
+
+
+
+A documentação para esta estrutura foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
 \item 
 src/\mbox{\hyperlink{dados_8h}{dados.\+h}}\end{DoxyCompactItemize}

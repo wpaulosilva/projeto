@@ -11,6 +11,7 @@
  #include "dados.h"
  #include <stdio.h>
  #include <stdlib.h>
+ #include <stdbool.h>
  
 #pragma region Criar Antena
  
@@ -82,32 +83,33 @@
   * @return Lista de antenas atualizada
   */
  
- Antena* InserirAntena(Antena* lista, char frequencia, int x, int y) {
-   
-     if (ProcuraAntena(lista, x, y)){
-         return lista;
-     }
- 
-     Antena* aux;
-     aux = CriaAntena(frequencia, x, y);
-     
-     if (aux == NULL){
-         return lista;
-     } 
- 
-     if (lista == NULL || (lista->y > y || (lista->y == y && lista->x > x))) {
-         aux->next = lista;
-         return aux;
-     }
- 
-     Antena* a = lista;
-     while (a->next && (a->next->y < y || (a->next->y == y && a->next->x < x))) {
-         a = a->next;
-     }
-     aux->next = a->next;
-     a->next = aux;
-     return lista;
- }
+bool InserirAntena(Antena* lista, char frequencia, int x, int y) {
+    
+    if (lista == NULL){
+        return false;
+    }
+
+    if (ProcuraAntena(lista, x, y)) {
+        return false;
+    }
+
+    Antena* aux = CriaAntena(frequencia, x, y);
+    if (aux == NULL){
+        return false;
+    }
+    
+    Antena* aux2 = lista;
+    while (aux2->next && (aux2->next->y < y || 
+          (aux2->next->y == y && aux2->next->x < x))) {
+        aux2 = aux2->next;
+    }
+
+    aux->next = aux2->next;
+    aux2->next = aux;
+
+    return true;
+}
+
  #pragma endregion
  
 #pragma region Remover Antena
@@ -125,117 +127,121 @@
   * @return Lista de antenas atualizada
   */
  
- Antena* RemoveAntena(Antena* lista, int x, int y) {
-     
-     if (lista == NULL){
-         return NULL;
-     }
-     
-     if (lista->x == x && lista->y == y) {
-         Antena* aux2 = lista->next;
-         free(lista);
-         return aux2;
-     }
- 
-     Antena* aux = lista;
-     while (aux->next && (aux->next->x != x || aux->next->y != y)) {
-         aux = aux->next;
-     }
- 
-     if (aux->next){
-         Antena* aux2 = aux->next;
-         aux->next = aux2->next;
-         free(aux2);
-     }
- 
-     return lista;
- }
+bool RemoveAntena(Antena* lista, int x, int y) {
+    
+    if (lista == NULL) {
+        return false;
+    }
+
+    Antena* aux = lista;
+
+    while (aux->next && (aux->next->x != x || aux->next->y != y)) {
+        aux = aux->next;
+    }
+
+    if (aux->next) {
+        Antena* aux2 = aux->next;
+
+        Antena* aux3 = lista;
+        while (aux3 != NULL) {
+            RemoverAresta(aux3, aux2);
+            aux3 = aux3->next;
+        }
+
+        aux->next = aux2->next;
+        free(aux2);
+
+        return true;
+    }
+
+    return false;
+}
  #pragma endregion
  
 #pragma region Calcular Nefasto
  
- /**
-  * @brief Calcular as antenas com efeito nefasto
-  * 
-  * Recebe o ponteiro do inicio da lista
-  * Retorna o ponteiro do inicio da lista atualizada
-  * 
-  * @param lista Lista de antenas
-  * @return Lista de antenas com efeito nefasto
-  */
- Antena* CalculaNefasto(Antena* lista) {
-    int tamanho = 3;
+//  /**
+//   * @brief Calcular as antenas com efeito nefasto
+//   * 
+//   * Recebe o ponteiro do inicio da lista
+//   * Retorna o ponteiro do inicio da lista atualizada
+//   * 
+//   * @param lista Lista de antenas
+//   * @return Lista de antenas com efeito nefasto
+//   */
+//  Antena* CalculaNefasto(Antena* lista) {
+//     int tamanho = 3;
 
-    for (Antena* a = lista; a != NULL; a = a->next) {
-        for (Antena* b = a->next; b != NULL; b = b->next) {
-            if (a->frequencia == b->frequencia) {
-                int novoX, novoY;
+//     for (Antena* a = lista; a != NULL; a = a->next) {
+//         for (Antena* b = a->next; b != NULL; b = b->next) {
+//             if (a->frequencia == b->frequencia) {
+//                 int novoX, novoY;
 
-                if (a->x == b->x && abs(a->y - b->y) == tamanho) {
-                    if (a->y < b->y) {
-                        novoY = a->y - tamanho;
-                        lista = InserirAntena(lista, '#', a->x, novoY);
-                        novoY = b->y + tamanho;
-                        lista = InserirAntena(lista, '#', b->x, novoY);
-                    } else {
-                        novoY = a->y + tamanho;
-                        lista = InserirAntena(lista, '#', a->x, novoY);
-                        novoY = b->y - tamanho;
-                        lista = InserirAntena(lista, '#', b->x, novoY);
-                    }
-                } 
-                else if (a->y == b->y && abs(a->x - b->x) == tamanho) {
-                    if (a->x < b->x) {
-                        novoX = a->x - tamanho;
-                        lista = InserirAntena(lista, '#', novoX, a->y);
-                        novoX = b->x + tamanho;
-                        lista = InserirAntena(lista, '#', novoX, b->y);
-                    } else {
-                        novoX = a->x + tamanho;
-                        lista = InserirAntena(lista, '#', novoX, a->y);
-                        novoX = b->x - tamanho;
-                        lista = InserirAntena(lista, '#', novoX, b->y);
-                    }
-                } 
-                else if (abs(a->x - b->x) == tamanho && abs(a->y - b->y) == tamanho && (a->x - b->x) == (a->y - b->y)) {
-                    if (a->x < b->x) {
-                        novoX = a->x - tamanho;
-                        novoY = a->y - tamanho;
-                        lista = InserirAntena(lista, '#', novoX, novoY);
-                        novoX = b->x + tamanho;
-                        novoY = b->y + tamanho;
-                        lista = InserirAntena(lista, '#', novoX, novoY);
-                    } else {
-                        novoX = a->x + tamanho;
-                        novoY = a->y + tamanho;
-                        lista = InserirAntena(lista, '#', novoX, novoY);
-                        novoX = b->x - tamanho;
-                        novoY = b->y - tamanho;
-                        lista = InserirAntena(lista, '#', novoX, novoY);
-                    }
-                }
-                else if (abs(a->x - b->x) == tamanho && abs(a->y - b->y) == tamanho && (a->x - b->x) == -(a->y - b->y)) {
-                    if (a->x < b->x) {
-                        novoX = a->x - tamanho;
-                        novoY = a->y + tamanho;
-                        lista = InserirAntena(lista, '#', novoX, novoY);
-                        novoX = b->x + tamanho;
-                        novoY = b->y - tamanho;
-                        lista = InserirAntena(lista, '#', novoX, novoY);
-                    } else {
-                        novoX = a->x + tamanho;
-                        novoY = a->y - tamanho;
-                        lista = InserirAntena(lista, '#', novoX, novoY);
-                        novoX = b->x - tamanho;
-                        novoY = b->y + tamanho;
-                        lista = InserirAntena(lista, '#', novoX, novoY);
-                    }
-                }
-            }
-        }
-    }
-    return lista;
-}
+//                 if (a->x == b->x && abs(a->y - b->y) == tamanho) {
+//                     if (a->y < b->y) {
+//                         novoY = a->y - tamanho;
+//                         lista = InserirAntena(lista, '#', a->x, novoY);
+//                         novoY = b->y + tamanho;
+//                         lista = InserirAntena(lista, '#', b->x, novoY);
+//                     } else {
+//                         novoY = a->y + tamanho;
+//                         lista = InserirAntena(lista, '#', a->x, novoY);
+//                         novoY = b->y - tamanho;
+//                         lista = InserirAntena(lista, '#', b->x, novoY);
+//                     }
+//                 } 
+//                 else if (a->y == b->y && abs(a->x - b->x) == tamanho) {
+//                     if (a->x < b->x) {
+//                         novoX = a->x - tamanho;
+//                         lista = InserirAntena(lista, '#', novoX, a->y);
+//                         novoX = b->x + tamanho;
+//                         lista = InserirAntena(lista, '#', novoX, b->y);
+//                     } else {
+//                         novoX = a->x + tamanho;
+//                         lista = InserirAntena(lista, '#', novoX, a->y);
+//                         novoX = b->x - tamanho;
+//                         lista = InserirAntena(lista, '#', novoX, b->y);
+//                     }
+//                 } 
+//                 else if (abs(a->x - b->x) == tamanho && abs(a->y - b->y) == tamanho && (a->x - b->x) == (a->y - b->y)) {
+//                     if (a->x < b->x) {
+//                         novoX = a->x - tamanho;
+//                         novoY = a->y - tamanho;
+//                         lista = InserirAntena(lista, '#', novoX, novoY);
+//                         novoX = b->x + tamanho;
+//                         novoY = b->y + tamanho;
+//                         lista = InserirAntena(lista, '#', novoX, novoY);
+//                     } else {
+//                         novoX = a->x + tamanho;
+//                         novoY = a->y + tamanho;
+//                         lista = InserirAntena(lista, '#', novoX, novoY);
+//                         novoX = b->x - tamanho;
+//                         novoY = b->y - tamanho;
+//                         lista = InserirAntena(lista, '#', novoX, novoY);
+//                     }
+//                 }
+//                 else if (abs(a->x - b->x) == tamanho && abs(a->y - b->y) == tamanho && (a->x - b->x) == -(a->y - b->y)) {
+//                     if (a->x < b->x) {
+//                         novoX = a->x - tamanho;
+//                         novoY = a->y + tamanho;
+//                         lista = InserirAntena(lista, '#', novoX, novoY);
+//                         novoX = b->x + tamanho;
+//                         novoY = b->y - tamanho;
+//                         lista = InserirAntena(lista, '#', novoX, novoY);
+//                     } else {
+//                         novoX = a->x + tamanho;
+//                         novoY = a->y - tamanho;
+//                         lista = InserirAntena(lista, '#', novoX, novoY);
+//                         novoX = b->x - tamanho;
+//                         novoY = b->y + tamanho;
+//                         lista = InserirAntena(lista, '#', novoX, novoY);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     return lista;
+// }
  #pragma endregion
  
 #pragma region Ler Antenas 
@@ -246,32 +252,42 @@
   * Recebe o nome do ficheiro e o ponteiro para o inicio da lista
   * Retorna o ponteiro para a lista atualizada
   * 
-  * Guarda até 200 caracteres por linha
   * @param lista Lista de antenas
   * @return Lista de antenas atualizada
   */
- Antena* LerAntenas(char* nome_ficheiro, Antena* lista) {
-     FILE* ficheiro = fopen(nome_ficheiro, "r");
-     if (ficheiro == NULL) {
-         return lista;
-     }
- 
-     char* linha = malloc(200); 
-     int y = 0;
- 
-     for (int x = 0; fgets(linha, 200, ficheiro) != NULL; y++) {
-         for (int x = 0; linha[x] != '\0'; x++) {
-             if (linha[x] != '.' && linha[x] != '\n') {
-                 lista = InserirAntena(lista, linha[x], x, y);
-             }
-         }
-     }
- 
-     free(linha);
-     fclose(ficheiro);
-     return lista;
- }
- 
+Antena* LerAntenas(char* nome_ficheiro, Antena* lista) {
+    
+    FILE* ficheiro = fopen(nome_ficheiro, "r");
+    if (ficheiro == NULL) {
+        return lista;
+    }
+
+    int x = 0;
+    int y = 0;
+    char aux;
+
+    while ((aux = fgetc(ficheiro)) != EOF) {
+        if (aux == ' ') {
+            continue;
+        }
+
+        if (aux != '.' && aux != '\n' && aux != '#') {
+            InserirAntena(&lista, aux, x, y);
+            x++;
+        }
+        else if (aux == '.') {
+            x++;
+        }
+
+        if (aux == '\n') {
+            x = 0;
+            y++;
+        }
+    }
+
+    fclose(ficheiro);
+    return lista;
+}
  #pragma endregion
  
 #pragma region Criar Arestas
@@ -313,24 +329,20 @@ Adj* CriarAresta(Antena* destino) {
  * @param validar Validação
  * @return Lista de adjacências atualizada
  */
-Adj* InserirAresta(Antena* inicio, Antena* destino) {
+bool InserirAresta(Antena* inicio, Antena* destino) {
     
     if(inicio == NULL){
-        return NULL;
+        return false;
     }
-
-    if(destino == NULL){
-        return NULL;
-    }
-
-    Adj* novaAresta = (Adj*)malloc(sizeof(Adj));
     
-    if (novaAresta == NULL){
-        return NULL;
-    }
+    if(destino == NULL){
+        return false;
+    }   
 
-    novaAresta->destino = destino;
-    novaAresta->prox = NULL;
+    Adj* novaAresta = CriarAresta(destino);
+    if (novaAresta == NULL) {
+        return false;
+    }
 
     if (inicio->adj == NULL) {
         inicio->adj = novaAresta;
@@ -341,7 +353,7 @@ Adj* InserirAresta(Antena* inicio, Antena* destino) {
         }
         aux->prox = novaAresta;
     }
-    return novaAresta;
+    return true;
 }
 
 #pragma endregion
@@ -350,36 +362,35 @@ Adj* InserirAresta(Antena* inicio, Antena* destino) {
 /**
  * @brief Cria o grafo de antenas
  * 
- * Recebe o ponteiro para a lista de antenas
- * Retorna a lista de antenas com as arestas criadas
- * 
- * Percorre cada antena na lista
- * Se a antena for diferente e tiver a mesma frequência, cria uma aresta e retorna true
+ * Recebe um ponteiro para a lista de antenas
+ * Cria arestas bidireccionais entre antenas com a mesma frequência
  * 
  * @param lista Lista de antenas
- * @return Lista de antenas com arestas criadas
+ * @return true se as arestas foram criadas com sucesso, false se a lista for inválida
  */
-
-Antena* CriarGrafo(Antena* lista) {
-    if (lista == NULL) return NULL;
+bool CriarGrafo(Antena* lista) {
+    
+    if (lista == NULL) {   
+        return false;
+    }
 
     Antena* aux = lista;
 
     while (aux != NULL) {
-        Antena* aux2 = lista;
+        Antena* aux2 = aux->next;
         
         while (aux2 != NULL) {
             if (aux2 != aux && aux2->frequencia == aux->frequencia) {
                 InserirAresta(aux, aux2);
+                InserirAresta(aux2, aux);
             }
             aux2 = aux2->next;
         }
         aux = aux->next;
     }
-    return lista;
+    
+    return true;
 }
-
-
 #pragma endregion
 
 #pragma region Remover Aresta
@@ -394,7 +405,19 @@ Antena* CriarGrafo(Antena* lista) {
  * @return true se a aresta foi removida com sucesso, false caso contrário
  */
 bool RemoverAresta(Antena* inicio, Antena* destino) {
-    if (inicio == NULL || destino == NULL || inicio->adj == NULL) {
+
+    if(inicio == NULL)
+    {
+        return false;
+    }
+
+    if(destino == NULL)
+    {
+        return false;
+    }   
+
+    if (inicio->adj == NULL)
+    {
         return false;
     }
 
@@ -403,21 +426,18 @@ bool RemoverAresta(Antena* inicio, Antena* destino) {
 
     while (aux != NULL) {
         if (aux->destino == destino) {
-            // Encontrou a aresta a remover
             if (aux2 == NULL) {
-                // A aresta a remover é a primeira da lista
                 inicio->adj = aux->prox;
             } else {
-                // Aresta está no meio ou fim da lista
                 aux2->prox = aux->prox;
             }
             free(aux);
-            return true;  // Remoção feita com sucesso
+            return true; 
         }
         aux2 = aux;
         aux = aux->prox;
     }
-    return false; // Aresta não encontrada
+    return false;
 }
 
 #pragma endregion
@@ -484,7 +504,7 @@ Profundidade* verProfundidade(Antena* origem, Profundidade* profundidade) {
         return profundidade;
     }
 
-    // printf("Debug: %c (%d, %d)\n", atual->frequencia, atual->x, atual->y); // debug
+    //printf("Debug: %c (%d, %d)\n", origem->frequencia, origem->x, origem->y);
 
     origem->marcado = true;
     profundidade = adicionarAProfundidade(profundidade, origem);
@@ -583,4 +603,4 @@ bool GravaAntenasBinario(char* nome_ficheiro, Antena* lista) {
     return true;
 }
 
- #pragma endregion
+ #pragma endregion  

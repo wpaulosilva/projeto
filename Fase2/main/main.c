@@ -1,3 +1,13 @@
+/**
+ * @file main.c
+ * @author Paulo Silva (a31506@alunos.ipca.pt)
+ * @brief Ficheiro main para chamar as funções
+ * @version 0.1
+ * @date 2025-03-20
+ * 
+ * @copyright Copyright (c) 2025
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../src/dados.h"
@@ -7,41 +17,46 @@ int main() {
     lista = LerAntenas("antenas.txt", lista);
 
     #pragma region Inserir Antena
-    // lista = InserirAntena(lista, 'A', 5, 7);
-    lista = InserirAntena(lista, 'B', 9, 7);
+    // if (InserirAntena(&lista, 'A', 10, 15)) {
+    //     printf("Antena inserida!\n");
+    // } else {
+    //     printf("Erro!\n");
+    // }
     #pragma endregion
 
     #pragma region Remover Antena
-    // lista = RemoveAntena(lista, 9, 5);
+    //lista = RemoveAntena(lista, 9, 5);
     #pragma endregion
 
     #pragma region Calcular Nefasto
-    lista = CalculaNefasto(lista);   
+    // lista = CalculaNefasto(lista);   
     #pragma endregion
 
     Antena* origem = ProcuraAntena(lista, 7,1 );
     Antena* destino = ProcuraAntena(lista, 9, 7);
 
-    #pragma region Criar Aresta
-    InserirAresta(origem, destino);
+    #pragma region Inserir Aresta
+        // if (InserirAresta(origem, destino)) {
+        //     printf("Aresta inserida!\n");
+        // } else {
+        //     printf("Erro!\n");
+        // } 
     #pragma endregion
 
-    lista = CriarGrafo(lista);
+    #pragma region Criar Grafo
+    if (CriarGrafo(lista)) {
+        printf("Grafo criado!\n");
+    } else {
+        printf("Erro!\n");
+    }
+    #pragma endregion
 
     #pragma region Remover Aresta
-    RemoverAresta(origem, destino);
-    #pragma endregion
-
-    #pragma region Mostrar Grafo
-
-    printf("\nGrafo:\n");
-    for (Antena* a = lista; a != NULL; a = a->next) {
-        printf("\n%c - (%d,%d): ", a->frequencia, a->x, a->y);
-        for (Adj* ad = a->adj; ad != NULL; ad = ad->prox) {
-            printf("(%c - %d,%d) ", ad->destino->frequencia, ad->destino->x, ad->destino->y);
-        }
-    }
-    printf("\n");
+        // if (RemoverAresta(origem, destino)) {
+        //     printf("Aresta Removida!\n");
+        // } else {
+        //     printf("Erro!\n");
+        // } 
     #pragma endregion
 
     #pragma region Profundidade

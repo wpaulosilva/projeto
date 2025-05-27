@@ -1,10 +1,10 @@
 var annotated_dup =
 [
-    [ "adj", "structadj.html", null ],
-    [ "antena", "structantena.html", null ],
-    [ "AntenaFile", "struct_antena_file.html", null ],
-    [ "ArestaFile", "struct_aresta_file.html", null ],
-    [ "Caminho", "struct_caminho.html", null ],
-    [ "ListaCaminhos", "struct_lista_caminhos.html", null ],
-    [ "Profundidade", "struct_profundidade.html", null ]
+    [ "adj", "structadj.html", "structadj" ],
+    [ "antena", "structantena.html", "structantena" ],
+    [ "AntenaFile", "struct_antena_file.html", "struct_antena_file" ],
+    [ "ArestaFile", "struct_aresta_file.html", "struct_aresta_file" ],
+    [ "Caminho", "struct_caminho.html", "struct_caminho" ],
+    [ "ListaCaminhos", "struct_lista_caminhos.html", "struct_lista_caminhos" ],
+    [ "Profundidade", "struct_profundidade.html", "struct_profundidade" ]
 ];

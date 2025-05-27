@@ -93,8 +93,8 @@ typedef struct ListaCaminhos {
 Antena* LerAntenas(char* nome_ficheiro, Antena* lista);
 Antena* CriaAntena(char frequencia, int x, int y);
 Antena* ProcuraAntena(Antena* lista, int x, int y);
-Antena* InserirAntena(Antena* lista, char frequencia, int x, int y);
-Antena* RemoveAntena(Antena* lista, int x, int y);
+bool InserirAntena(Antena* lista, char frequencia, int x, int y);
+bool RemoveAntena(Antena* lista, int x, int y);
 
 /**
  * @brief Declaração da função para calcular o efeito nefasto
@@ -112,15 +112,14 @@ Adj* CriarAresta(Antena* destino);
  * Recebe o ponteiro para a antena de início, a aresta a inserir e um ponteiro para validação
  * Retorna a lista de adjacências atualizada
  */
-Adj* InserirAresta(Antena* inicio, Antena* destino);
+bool InserirAresta(Antena* inicio, Antena* destino);
 /**
  * @brief Declaração da função para criar o grafo
  * 
  * Recebe o ponteiro para a lista de antenas
  * Retorna a lista de antenas com as arestas criadas
  */
-Antena* CriarGrafo(Antena* lista);
-
+bool CriarGrafo(Antena* lista);
 /**
  * @brief Declaração da função para remover arestas
  * 

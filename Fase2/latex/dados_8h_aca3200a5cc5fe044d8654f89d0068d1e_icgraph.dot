@@ -1,0 +1,17 @@
+digraph "InserirAntena"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="InserirAntena",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Insere uma antena na lista de forma ordenada por coordenadas A antena é inserida em uma posição onde ..."];
+  Node1 -> Node2 [id="edge6_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="CalculaNefasto",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$funcoes_8c.html#aa1635ce36b2bdacf5f70226d84c5cf9c",tooltip="Declaração da função para calcular o efeito nefasto."];
+  Node2 -> Node3 [id="edge7_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4",tooltip=" "];
+  Node1 -> Node4 [id="edge8_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="LerAntenas",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$funcoes_8c.html#af4b3c158648f3bce23a7fdff9b4dfefc",tooltip="Declaração da função para ler do ficheiro, criar, procurar, inserir e remover antenas."];
+  Node4 -> Node3 [id="edge9_Node000004_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node3 [id="edge10_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

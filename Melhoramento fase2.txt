@@ -1,0 +1,5 @@
+-Mudar a forma do malloc do lerantenas ✅
+-Meter do tipo bool o inserir e remover antenas. ✅
+-Quando se remove um vértice, remover aquelas adjacencias ✅
+-Meter o doxygem do tipo c, e meter a aparecer um grafo ✅
+-Nome da disciplina no relatorio ✅

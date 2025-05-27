@@ -24,17 +24,21 @@
 */
 var NAVTREE =
 [
-  [ "My Project", "index.html", [
-    [ "Classes", "annotated.html", [
-      [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Index", "classes.html", null ]
+  [ "Trabalho Prático EDA", "index.html", [
+    [ "Estruturas de dados", "annotated.html", [
+      [ "Estruturas de dados", "annotated.html", "annotated_dup" ],
+      [ "Índice das estruturas de dados", "classes.html", null ],
+      [ "Campos de dados", "functions.html", [
+        [ "Tudo", "functions.html", null ],
+        [ "Variáveis", "functions_vars.html", null ]
+      ] ]
     ] ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
-        [ "Typedefs", "globals_type.html", null ]
+    [ "Ficheiros", "files.html", [
+      [ "Lista de ficheiros", "files.html", "files_dup" ],
+      [ "Globais", "globals.html", [
+        [ "Tudo", "globals.html", null ],
+        [ "Funções", "globals_func.html", null ],
+        [ "Definições de tipos", "globals_type.html", null ]
       ] ]
     ] ]
   ] ]
@@ -45,5 +49,5 @@ var NAVTREEINDEX =
 "annotated.html"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronization';
-var SYNCOFFMSG = 'click to enable panel synchronization';
+var SYNCONMSG = 'clique para desativar a sincronização do painel';
+var SYNCOFFMSG = 'clique para ativar a sincronização do painel';

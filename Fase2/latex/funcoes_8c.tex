@@ -1,4 +1,4 @@
-\doxysection{src/funcoes.c File Reference}
+\doxysection{Referência ao ficheiro src/funcoes.c}
 \hypertarget{funcoes_8c}{}\label{funcoes_8c}\index{src/funcoes.c@{src/funcoes.c}}
 
 
@@ -8,26 +8,27 @@ Implementar funções.
 {\ttfamily \#include "{}dados.\+h"{}}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
-\doxysubsubsection*{Functions}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Diagrama de dependências de inclusão para funcoes.\+c\+:
+% FIG 0
+\doxysubsubsection*{Funções}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_ac7c1c6d111a3d827aafefa12aae70fa0}{Cria\+Antena}} (char frequencia, int x, int y)
 \begin{DoxyCompactList}\small\item\em Cria uma nova antena Aloca a memória para a nova antena Recebe a frequência e as coordenadas x e y Retorna um ponteiro onde esta essa memoria alocada. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_a0eb9acbb633921b8e08a81b6da5e531d}{Procura\+Antena}} (\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}lista, int x, int y)
 \begin{DoxyCompactList}\small\item\em Procura uma antena na lista nas coordenadas x e y Percorre a lista de antenas a antena se o x e y forem iguais. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_aca3200a5cc5fe044d8654f89d0068d1e}{Inserir\+Antena}} (\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}lista, char frequencia, int x, int y)
+bool \mbox{\hyperlink{funcoes_8c_a69daf7b1c1e2196ea27443ee81656224}{Inserir\+Antena}} (\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}lista, char frequencia, int x, int y)
 \begin{DoxyCompactList}\small\item\em Insere uma antena na lista de forma ordenada por coordenadas A antena é inserida em uma posição onde as antenas são ordenadas pelo y e depois se for igual o x. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_afa31794d2443140a3296001c75d13a5a}{Remove\+Antena}} (\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}lista, int x, int y)
+bool \mbox{\hyperlink{funcoes_8c_aaf2ce7d23cd90ab705603591b5e8fb41}{Remove\+Antena}} (\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}lista, int x, int y)
 \begin{DoxyCompactList}\small\item\em Remove uma antena. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_aa1635ce36b2bdacf5f70226d84c5cf9c}{Calcula\+Nefasto}} (\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}lista)
-\begin{DoxyCompactList}\small\item\em Calcular as antenas com efeito nefasto. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_af4b3c158648f3bce23a7fdff9b4dfefc}{Ler\+Antenas}} (char \texorpdfstring{$\ast$}{*}nome\+\_\+ficheiro, \mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}lista)
-\begin{DoxyCompactList}\small\item\em Lê as antenas do ficheiro de texto. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Calcular as antenas com efeito nefasto. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{dados_8h_aa4e42d74420121b5a48e89648fcbf905}{Adj}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_a10d902139cd18a3bf5aaf99650a4e9d8}{Criar\+Aresta}} (\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}destino)
 \begin{DoxyCompactList}\small\item\em Cria uma nova aresta. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{dados_8h_aa4e42d74420121b5a48e89648fcbf905}{Adj}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_a9d3f5269a8ed9af7725f42795b04686d}{Inserir\+Aresta}} (\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}inicio, \mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}destino)
+bool \mbox{\hyperlink{funcoes_8c_aa92eec9996ab024ca52bd9edd4384dff}{Inserir\+Aresta}} (\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}inicio, \mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}destino)
 \begin{DoxyCompactList}\small\item\em Insere uma aresta na lista. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_a6e7a028599722ec52fcbeddffbe321de}{Criar\+Grafo}} (\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}lista)
+bool \mbox{\hyperlink{funcoes_8c_a76b8a843b78e8fafdd8ffa6b43874323}{Criar\+Grafo}} (\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}lista)
 \begin{DoxyCompactList}\small\item\em Cria o grafo de antenas. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{funcoes_8c_ae12f7526bb0566217e7e50e810cf0a84}{Remover\+Aresta}} (\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}inicio, \mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}destino)
 \begin{DoxyCompactList}\small\item\em Remove uma aresta entre duas antenas. \end{DoxyCompactList}\item 
@@ -41,16 +42,16 @@ bool \mbox{\hyperlink{funcoes_8c_ac54dde6da30b887fa81dd03092d5fa6c}{Grava\+Anten
 \begin{DoxyCompactList}\small\item\em Grava as antenas no ficheiro antenas2.\+bin Cada antena é gravada no formato {\ttfamily \doxylink{struct_antena_file}{Antena\+File}}, que contém frequência e coordenadas. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Descrição detalhada}
 Implementar funções. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Autor}
 Paulo Silva (\href{mailto:a31506@alunos.ipca.pt}{\texttt{ a31506@alunos.\+ipca.\+pt}}) 
 \end{DoxyAuthor}
-\begin{DoxyVersion}{Version}
+\begin{DoxyVersion}{Versão}
 0.\+1 
 \end{DoxyVersion}
-\begin{DoxyDate}{Date}
+\begin{DoxyDate}{Data}
 2025-\/03-\/20
 \end{DoxyDate}
 \begin{DoxyCopyright}{Copyright}
@@ -58,7 +59,7 @@ Copyright (c) 2025
 \end{DoxyCopyright}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentação das funções}
 \Hypertarget{funcoes_8c_a118b4ded2a82893eb06655b9627db904}\index{funcoes.c@{funcoes.c}!adicionarAProfundidade@{adicionarAProfundidade}}
 \index{adicionarAProfundidade@{adicionarAProfundidade}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{adicionarAProfundidade()}{adicionarAProfundidade()}}
@@ -76,37 +77,25 @@ Cria uma nova celula para guardar uma antena Adiciona no fim da lista Retorna a 
 Recebe o ponteiro para a lista de profundidade e um ponteiro para a antena Retorna o ponteiro para a lista de profundidade atualizada
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Parâmetros}
 {\em profundidade} & Ponteiro para a lista de profundidade \\
 \hline
 {\em antena} & Ponteiro para a antena a adicionar \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Retorna}
 Ponteiro para a lista de profundidade atualizada 
 \end{DoxyReturn}
-\Hypertarget{funcoes_8c_aa1635ce36b2bdacf5f70226d84c5cf9c}\index{funcoes.c@{funcoes.c}!CalculaNefasto@{CalculaNefasto}}
-\index{CalculaNefasto@{CalculaNefasto}!funcoes.c@{funcoes.c}}
-\doxysubsubsection{\texorpdfstring{CalculaNefasto()}{CalculaNefasto()}}
-{\footnotesize\ttfamily \label{funcoes_8c_aa1635ce36b2bdacf5f70226d84c5cf9c} 
-\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} Calcula\+Nefasto (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}}]{lista}{}\end{DoxyParamCaption})}
+
+
+Referências \mbox{\hyperlink{struct_profundidade_aef062ce077bd7025326c8130851f1b97}{Profundidade\+::antena}} e \mbox{\hyperlink{struct_profundidade_a631d6a4ccd1210e3888596e61c51fc87}{Profundidade\+::prox}}.
 
 
 
-Calcular as antenas com efeito nefasto. 
+Referenciado por \mbox{\hyperlink{dados_8h_a69a4f929d50d9bd6e2629e6586b51f40}{ver\+Profundidade()}}.
 
-Declaração da função para calcular o efeito nefasto.
-
-Recebe o ponteiro do inicio da lista Retorna o ponteiro do inicio da lista atualizada
-
-
-\begin{DoxyParams}{Parameters}
-{\em lista} & Lista de antenas \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Lista de antenas com efeito nefasto 
-\end{DoxyReturn}
+Este é o diagrama das funções que utilizam esta função\+:
+% FIG 1
 \Hypertarget{funcoes_8c_a5cbc14e18d4e13a418f2ab055984e032}\index{funcoes.c@{funcoes.c}!Caminhos@{Caminhos}}
 \index{Caminhos@{Caminhos}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{Caminhos()}{Caminhos()}}
@@ -122,7 +111,7 @@ Declaração da função para ver os caminhos.
 Recebe o ponteiro para a antena de origem, o ponteiro para a antena de destino, o caminho atual e a lista de caminhos Retorna a lista de caminhos encontrados
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Parâmetros}
 {\em origem} & Ponteiro para a antena de origem \\
 \hline
 {\em destino} & Ponteiro para a antena de destino \\
@@ -132,9 +121,13 @@ Recebe o ponteiro para a antena de origem, o ponteiro para a antena de destino, 
 {\em lista\+Caminhos} & Ponteiro para a lista de caminhos encontrados \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Retorna}
 Lista de caminhos encontrados 
 \end{DoxyReturn}
+
+
+Referências \mbox{\hyperlink{struct_caminho_af2377b122ae9e1f846e1947da38f3ab9}{Caminho\+::antena}}, \mbox{\hyperlink{struct_lista_caminhos_ae7025134b28b291d014563253eca2245}{Lista\+Caminhos\+::caminho}}, \mbox{\hyperlink{structantena_a7b8ec541a4be9e7aecd2d75af251bb98}{antena\+::marcado}}, \mbox{\hyperlink{struct_caminho_a85e5891cda2c69e967b81c8f7bb69996}{Caminho\+::prox}} e \mbox{\hyperlink{struct_lista_caminhos_a8e230ce15049d6ec8aacddb66a9819f7}{Lista\+Caminhos\+::prox}}.
+
 \Hypertarget{funcoes_8c_ac7c1c6d111a3d827aafefa12aae70fa0}\index{funcoes.c@{funcoes.c}!CriaAntena@{CriaAntena}}
 \index{CriaAntena@{CriaAntena}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{CriaAntena()}{CriaAntena()}}
@@ -146,7 +139,7 @@ Lista de caminhos encontrados
 Cria uma nova antena Aloca a memória para a nova antena Recebe a frequência e as coordenadas x e y Retorna um ponteiro onde esta essa memoria alocada. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Parâmetros}
 {\em frequencia} & A frequência da antena \\
 \hline
 {\em x} & Coordenada x \\
@@ -154,6 +147,16 @@ Cria uma nova antena Aloca a memória para a nova antena Recebe a frequência e 
 {\em y} & Coordenada y \\
 \hline
 \end{DoxyParams}
+
+
+Referências \mbox{\hyperlink{structantena_a4a3d3d6c1eb302f1384202702a0b7aa8}{antena\+::adj}}, \mbox{\hyperlink{structantena_aee34bf561e09b1bbe9bc27932b16132a}{antena\+::frequencia}}, \mbox{\hyperlink{structantena_af93a7c61fd91c55fab46768ba615956d}{antena\+::next}}, \mbox{\hyperlink{structantena_afb2aea0bd79533101e6cb97a7f91ce3c}{antena\+::x}} e \mbox{\hyperlink{structantena_ad809df819fbcb6716ad1e395e11bd856}{antena\+::y}}.
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_a69daf7b1c1e2196ea27443ee81656224}{Inserir\+Antena()}}.
+
+Este é o diagrama das funções que utilizam esta função\+:
+% FIG 2
 \Hypertarget{funcoes_8c_a10d902139cd18a3bf5aaf99650a4e9d8}\index{funcoes.c@{funcoes.c}!CriarAresta@{CriarAresta}}
 \index{CriarAresta@{CriarAresta}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{CriarAresta()}{CriarAresta()}}
@@ -169,20 +172,30 @@ Declaração da função para criar arestas.
 Recebe a antena de destino e um ponteiro para validação Retorna um ponteiro para a nova aresta criada
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Parâmetros}
 {\em destino} & \doxylink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena} de destino \\
 \hline
 {\em validar} & Validação \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Retorna}
 Nova aresta criada 
 \end{DoxyReturn}
-\Hypertarget{funcoes_8c_a6e7a028599722ec52fcbeddffbe321de}\index{funcoes.c@{funcoes.c}!CriarGrafo@{CriarGrafo}}
+
+
+Referências \mbox{\hyperlink{structadj_a2508b307587974e1a95198684747ff6f}{adj\+::destino}} e \mbox{\hyperlink{structadj_a69bb00e4cc274690297b61d3c473cb6e}{adj\+::prox}}.
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_aa92eec9996ab024ca52bd9edd4384dff}{Inserir\+Aresta()}}.
+
+Este é o diagrama das funções que utilizam esta função\+:
+% FIG 3
+\Hypertarget{funcoes_8c_a76b8a843b78e8fafdd8ffa6b43874323}\index{funcoes.c@{funcoes.c}!CriarGrafo@{CriarGrafo}}
 \index{CriarGrafo@{CriarGrafo}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{CriarGrafo()}{CriarGrafo()}}
-{\footnotesize\ttfamily \label{funcoes_8c_a6e7a028599722ec52fcbeddffbe321de} 
-\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} Criar\+Grafo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}}]{lista}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{funcoes_8c_a76b8a843b78e8fafdd8ffa6b43874323} 
+bool Criar\+Grafo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}}]{lista}{}\end{DoxyParamCaption})}
 
 
 
@@ -190,18 +203,28 @@ Cria o grafo de antenas.
 
 Declaração da função para criar o grafo.
 
-Recebe o ponteiro para a lista de antenas Retorna a lista de antenas com as arestas criadas
-
-Percorre cada antena na lista Se a antena for diferente e tiver a mesma frequência, cria uma aresta e retorna true
+Recebe um ponteiro para a lista de antenas Cria arestas bidireccionais entre antenas com a mesma frequência
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Parâmetros}
 {\em lista} & Lista de antenas \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Lista de antenas com arestas criadas 
+\begin{DoxyReturn}{Retorna}
+true se as arestas foram criadas com sucesso, false se a lista for inválida 
 \end{DoxyReturn}
+
+
+Referências \mbox{\hyperlink{structantena_aee34bf561e09b1bbe9bc27932b16132a}{antena\+::frequencia}}, \mbox{\hyperlink{funcoes_8c_aa92eec9996ab024ca52bd9edd4384dff}{Inserir\+Aresta()}} e \mbox{\hyperlink{structantena_af93a7c61fd91c55fab46768ba615956d}{antena\+::next}}.
+
+
+
+Referenciado por \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main()}}.
+
+Grafo de chamadas desta função\+:
+% FIG 4
+Este é o diagrama das funções que utilizam esta função\+:
+% FIG 5
 \Hypertarget{funcoes_8c_ac54dde6da30b887fa81dd03092d5fa6c}\index{funcoes.c@{funcoes.c}!GravaAntenasBinario@{GravaAntenasBinario}}
 \index{GravaAntenasBinario@{GravaAntenasBinario}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{GravaAntenasBinario()}{GravaAntenasBinario()}}
@@ -217,20 +240,30 @@ Declaração da função para guardar no ficheiro binário.
 Recebe o nome do ficheiro e a lista de antenas Retorna verdadeiro se a gravação for bem-\/sucedida, falso caso contrário
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Parâmetros}
 {\em nome\+\_\+ficheiro} & Nome do ficheiro onde as antenas serão gravadas \\
 \hline
 {\em lista} & Lista de antenas a ser gravada \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Retorna}
 Verdadeiro se a gravação for bem-\/sucedida, falso caso contrário 
 \end{DoxyReturn}
-\Hypertarget{funcoes_8c_aca3200a5cc5fe044d8654f89d0068d1e}\index{funcoes.c@{funcoes.c}!InserirAntena@{InserirAntena}}
+
+
+Referências \mbox{\hyperlink{structadj_a2508b307587974e1a95198684747ff6f}{adj\+::destino}}, \mbox{\hyperlink{structantena_af93a7c61fd91c55fab46768ba615956d}{antena\+::next}}, \mbox{\hyperlink{structadj_a69bb00e4cc274690297b61d3c473cb6e}{adj\+::prox}}, \mbox{\hyperlink{structantena_afb2aea0bd79533101e6cb97a7f91ce3c}{antena\+::x}} e \mbox{\hyperlink{structantena_ad809df819fbcb6716ad1e395e11bd856}{antena\+::y}}.
+
+
+
+Referenciado por \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main()}}.
+
+Este é o diagrama das funções que utilizam esta função\+:
+% FIG 6
+\Hypertarget{funcoes_8c_a69daf7b1c1e2196ea27443ee81656224}\index{funcoes.c@{funcoes.c}!InserirAntena@{InserirAntena}}
 \index{InserirAntena@{InserirAntena}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{InserirAntena()}{InserirAntena()}}
-{\footnotesize\ttfamily \label{funcoes_8c_aca3200a5cc5fe044d8654f89d0068d1e} 
-\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} Inserir\+Antena (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}}]{lista}{, }\item[{char}]{frequencia}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{funcoes_8c_a69daf7b1c1e2196ea27443ee81656224} 
+bool Inserir\+Antena (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}}]{lista}{, }\item[{char}]{frequencia}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
 
 
 
@@ -239,7 +272,7 @@ Insere uma antena na lista de forma ordenada por coordenadas A antena é inserid
 Recebe o ponteiro do inicio da lista Recebe a frequência e as coordenadas x e y Retorna o ponteiro do inicio da lista atualizada
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Parâmetros}
 {\em lista} & Lista de antenas \\
 \hline
 {\em frequencia} & Frequência da antena \\
@@ -249,14 +282,26 @@ Recebe o ponteiro do inicio da lista Recebe a frequência e as coordenadas x e y
 {\em y} & Coordenada y \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Retorna}
 Lista de antenas atualizada 
 \end{DoxyReturn}
-\Hypertarget{funcoes_8c_a9d3f5269a8ed9af7725f42795b04686d}\index{funcoes.c@{funcoes.c}!InserirAresta@{InserirAresta}}
+
+
+Referências \mbox{\hyperlink{funcoes_8c_ac7c1c6d111a3d827aafefa12aae70fa0}{Cria\+Antena()}}, \mbox{\hyperlink{structantena_af93a7c61fd91c55fab46768ba615956d}{antena\+::next}}, \mbox{\hyperlink{funcoes_8c_a0eb9acbb633921b8e08a81b6da5e531d}{Procura\+Antena()}}, \mbox{\hyperlink{structantena_afb2aea0bd79533101e6cb97a7f91ce3c}{antena\+::x}} e \mbox{\hyperlink{structantena_ad809df819fbcb6716ad1e395e11bd856}{antena\+::y}}.
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_af4b3c158648f3bce23a7fdff9b4dfefc}{Ler\+Antenas()}}.
+
+Grafo de chamadas desta função\+:
+% FIG 7
+Este é o diagrama das funções que utilizam esta função\+:
+% FIG 8
+\Hypertarget{funcoes_8c_aa92eec9996ab024ca52bd9edd4384dff}\index{funcoes.c@{funcoes.c}!InserirAresta@{InserirAresta}}
 \index{InserirAresta@{InserirAresta}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{InserirAresta()}{InserirAresta()}}
-{\footnotesize\ttfamily \label{funcoes_8c_a9d3f5269a8ed9af7725f42795b04686d} 
-\mbox{\hyperlink{dados_8h_aa4e42d74420121b5a48e89648fcbf905}{Adj}} \texorpdfstring{$\ast$}{*} Inserir\+Aresta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}}]{inicio}{, }\item[{\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}}]{destino}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{funcoes_8c_aa92eec9996ab024ca52bd9edd4384dff} 
+bool Inserir\+Aresta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}}]{inicio}{, }\item[{\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}}]{destino}{}\end{DoxyParamCaption})}
 
 
 
@@ -267,7 +312,7 @@ Declaração da função para inserir arestas.
 Recebe o ponteiro para a antena de início, a aresta a inserir e um ponteiro para validação Retorna a lista de adjacências atualizada
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Parâmetros}
 {\em inicio} & \doxylink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena} onde a aresta será inserida. \\
 \hline
 {\em aresta} & Aresta a inserir \\
@@ -275,9 +320,21 @@ Recebe o ponteiro para a antena de início, a aresta a inserir e um ponteiro par
 {\em validar} & Validação \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Retorna}
 Lista de adjacências atualizada 
 \end{DoxyReturn}
+
+
+Referências \mbox{\hyperlink{structantena_a4a3d3d6c1eb302f1384202702a0b7aa8}{antena\+::adj}}, \mbox{\hyperlink{funcoes_8c_a10d902139cd18a3bf5aaf99650a4e9d8}{Criar\+Aresta()}} e \mbox{\hyperlink{structadj_a69bb00e4cc274690297b61d3c473cb6e}{adj\+::prox}}.
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_a76b8a843b78e8fafdd8ffa6b43874323}{Criar\+Grafo()}}.
+
+Grafo de chamadas desta função\+:
+% FIG 9
+Este é o diagrama das funções que utilizam esta função\+:
+% FIG 10
 \Hypertarget{funcoes_8c_af4b3c158648f3bce23a7fdff9b4dfefc}\index{funcoes.c@{funcoes.c}!LerAntenas@{LerAntenas}}
 \index{LerAntenas@{LerAntenas}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{LerAntenas()}{LerAntenas()}}
@@ -286,20 +343,44 @@ Lista de adjacências atualizada
 
 
 
-Lê as antenas do ficheiro de texto. 
+Calcular as antenas com efeito nefasto. 
 
 Declaração da função para ler do ficheiro, criar, procurar, inserir e remover antenas.
 
-Recebe o nome do ficheiro e o ponteiro para o inicio da lista Retorna o ponteiro para a lista atualizada
+Recebe o ponteiro do inicio da lista Retorna o ponteiro do inicio da lista atualizada
 
-Guarda até 200 caracteres por linha 
-\begin{DoxyParams}{Parameters}
+
+\begin{DoxyParams}{Parâmetros}
 {\em lista} & Lista de antenas \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Retorna}
+Lista de antenas com efeito nefasto
+\end{DoxyReturn}
+Lê as antenas do ficheiro de texto
+
+Recebe o nome do ficheiro e o ponteiro para o inicio da lista Retorna o ponteiro para a lista atualizada
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em lista} & Lista de antenas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
 Lista de antenas atualizada 
 \end{DoxyReturn}
+
+
+Referências \mbox{\hyperlink{funcoes_8c_a69daf7b1c1e2196ea27443ee81656224}{Inserir\+Antena()}}.
+
+
+
+Referenciado por \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main()}}.
+
+Grafo de chamadas desta função\+:
+% FIG 11
+Este é o diagrama das funções que utilizam esta função\+:
+% FIG 12
 \Hypertarget{funcoes_8c_a0eb9acbb633921b8e08a81b6da5e531d}\index{funcoes.c@{funcoes.c}!ProcuraAntena@{ProcuraAntena}}
 \index{ProcuraAntena@{ProcuraAntena}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{ProcuraAntena()}{ProcuraAntena()}}
@@ -313,7 +394,7 @@ Procura uma antena na lista nas coordenadas x e y Percorre a lista de antenas a 
 Recebe o ponteiro do inicio da lista Retorna NULL se não encontrar Retorna o ponteiro para a antena encontrada
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Parâmetros}
 {\em lista} & Lista das antenas \\
 \hline
 {\em x} & Coordenada x \\
@@ -321,14 +402,24 @@ Recebe o ponteiro do inicio da lista Retorna NULL se não encontrar Retorna o po
 {\em y} & Coordenada y \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Retorna}
 Ponteiro para a antena encontrada ou NULL se não encontrar 
 \end{DoxyReturn}
-\Hypertarget{funcoes_8c_afa31794d2443140a3296001c75d13a5a}\index{funcoes.c@{funcoes.c}!RemoveAntena@{RemoveAntena}}
+
+
+Referências \mbox{\hyperlink{structantena_af93a7c61fd91c55fab46768ba615956d}{antena\+::next}}.
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_a69daf7b1c1e2196ea27443ee81656224}{Inserir\+Antena()}} e \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main()}}.
+
+Este é o diagrama das funções que utilizam esta função\+:
+% FIG 13
+\Hypertarget{funcoes_8c_aaf2ce7d23cd90ab705603591b5e8fb41}\index{funcoes.c@{funcoes.c}!RemoveAntena@{RemoveAntena}}
 \index{RemoveAntena@{RemoveAntena}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{RemoveAntena()}{RemoveAntena()}}
-{\footnotesize\ttfamily \label{funcoes_8c_afa31794d2443140a3296001c75d13a5a} 
-\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} Remove\+Antena (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}}]{lista}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{funcoes_8c_aaf2ce7d23cd90ab705603591b5e8fb41} 
+bool Remove\+Antena (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*}}]{lista}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
 
 
 
@@ -337,7 +428,7 @@ Remove uma antena.
 Recebe o ponteiro do inicio da lista Recebe as coordenadas x e y Retorna o ponteiro do inicio da lista atualizada
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Parâmetros}
 {\em lista} & Lista de antenas \\
 \hline
 {\em x} & Coordenada x \\
@@ -345,9 +436,15 @@ Recebe o ponteiro do inicio da lista Recebe as coordenadas x e y Retorna o ponte
 {\em y} & Coordenada y \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Retorna}
 Lista de antenas atualizada 
 \end{DoxyReturn}
+
+
+Referências \mbox{\hyperlink{structantena_af93a7c61fd91c55fab46768ba615956d}{antena\+::next}}, \mbox{\hyperlink{funcoes_8c_ae12f7526bb0566217e7e50e810cf0a84}{Remover\+Aresta()}}, \mbox{\hyperlink{structantena_afb2aea0bd79533101e6cb97a7f91ce3c}{antena\+::x}} e \mbox{\hyperlink{structantena_ad809df819fbcb6716ad1e395e11bd856}{antena\+::y}}.
+
+Grafo de chamadas desta função\+:
+% FIG 14
 \Hypertarget{funcoes_8c_ae12f7526bb0566217e7e50e810cf0a84}\index{funcoes.c@{funcoes.c}!RemoverAresta@{RemoverAresta}}
 \index{RemoverAresta@{RemoverAresta}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{RemoverAresta()}{RemoverAresta()}}
@@ -363,15 +460,25 @@ Declaração da função para remover arestas.
 Recebe o ponteiro para a antena de início e o ponteiro para a antena de destino Retorna true se a aresta foi removida com sucesso, false caso contrário
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Parâmetros}
 {\em inicio} & Ponteiro para a antena de início \\
 \hline
 {\em destino} & Ponteiro para a antena de destino \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Retorna}
 true se a aresta foi removida com sucesso, false caso contrário 
 \end{DoxyReturn}
+
+
+Referências \mbox{\hyperlink{structantena_a4a3d3d6c1eb302f1384202702a0b7aa8}{antena\+::adj}}, \mbox{\hyperlink{structadj_a2508b307587974e1a95198684747ff6f}{adj\+::destino}} e \mbox{\hyperlink{structadj_a69bb00e4cc274690297b61d3c473cb6e}{adj\+::prox}}.
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_aaf2ce7d23cd90ab705603591b5e8fb41}{Remove\+Antena()}}.
+
+Este é o diagrama das funções que utilizam esta função\+:
+% FIG 15
 \Hypertarget{funcoes_8c_a91add73db8a5b872630fa09ce388b174}\index{funcoes.c@{funcoes.c}!verProfundidade@{verProfundidade}}
 \index{verProfundidade@{verProfundidade}!funcoes.c@{funcoes.c}}
 \doxysubsubsection{\texorpdfstring{verProfundidade()}{verProfundidade()}}
@@ -389,12 +496,24 @@ Mete a antena como visitada Adiciona a antena à lista Vai visitar todos os adja
 Recebe o ponteiro para a antena atual e a lista de profundidade Retorna a lista de profundidade atualizada
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Parâmetros}
 {\em origem} & Ponteiro para a antena atual \\
 \hline
 {\em profundidade} & Ponteiro para a lista de profundidade \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Retorna}
 Ponteiro para a lista de profundidade atualizada 
 \end{DoxyReturn}
+
+
+Referências \mbox{\hyperlink{funcoes_8c_a118b4ded2a82893eb06655b9627db904}{adicionar\+AProfundidade()}}, \mbox{\hyperlink{structantena_a4a3d3d6c1eb302f1384202702a0b7aa8}{antena\+::adj}}, \mbox{\hyperlink{structantena_a7b8ec541a4be9e7aecd2d75af251bb98}{antena\+::marcado}}, \mbox{\hyperlink{structadj_a69bb00e4cc274690297b61d3c473cb6e}{adj\+::prox}} e \mbox{\hyperlink{funcoes_8c_a91add73db8a5b872630fa09ce388b174}{ver\+Profundidade()}}.
+
+
+
+Referenciado por \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main()}} e \mbox{\hyperlink{dados_8h_a69a4f929d50d9bd6e2629e6586b51f40}{ver\+Profundidade()}}.
+
+Grafo de chamadas desta função\+:
+% FIG 16
+Este é o diagrama das funções que utilizam esta função\+:
+% FIG 17

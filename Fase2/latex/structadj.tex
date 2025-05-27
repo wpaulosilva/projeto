@@ -1,4 +1,4 @@
-\doxysection{adj Struct Reference}
+\doxysection{Referência à estrutura adj}
 \hypertarget{structadj}{}\label{structadj}\index{adj@{adj}}
 
 
@@ -9,22 +9,47 @@ Estrutura que representa uma aresta entre antenas.
 
 {\ttfamily \#include $<$dados.\+h$>$}
 
-\doxysubsubsection*{Public Attributes}
+
+
+Diagrama de colaboração para adj\+:
+% FIG 0
+\doxysubsubsection*{Campos de Dados}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{structadj_a2508b307587974e1a95198684747ff6f}\label{structadj_a2508b307587974e1a95198684747ff6f} 
-\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} {\bfseries destino}
+\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structadj_a2508b307587974e1a95198684747ff6f}{destino}}
 \item 
-\Hypertarget{structadj_a69bb00e4cc274690297b61d3c473cb6e}\label{structadj_a69bb00e4cc274690297b61d3c473cb6e} 
-struct \mbox{\hyperlink{structadj}{adj}} \texorpdfstring{$\ast$}{*} {\bfseries prox}
+struct \mbox{\hyperlink{structadj}{adj}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structadj_a69bb00e4cc274690297b61d3c473cb6e}{prox}}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Descrição detalhada}
 Estrutura que representa uma aresta entre antenas. 
 
 Contém um ponteiro para a antena de destino e um ponteiro para a próxima aresta 
 
-The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Documentação dos campos e atributos}
+\Hypertarget{structadj_a2508b307587974e1a95198684747ff6f}\index{adj@{adj}!destino@{destino}}
+\index{destino@{destino}!adj@{adj}}
+\doxysubsubsection{\texorpdfstring{destino}{destino}}
+{\footnotesize\ttfamily \label{structadj_a2508b307587974e1a95198684747ff6f} 
+\mbox{\hyperlink{dados_8h_a3b33a83b140928878dd5d32af4cb8c43}{Antena}}\texorpdfstring{$\ast$}{*} adj\+::destino}
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_a10d902139cd18a3bf5aaf99650a4e9d8}{Criar\+Aresta()}}, \mbox{\hyperlink{dados_8h_ac54dde6da30b887fa81dd03092d5fa6c}{Grava\+Antenas\+Binario()}} e \mbox{\hyperlink{dados_8h_ae12f7526bb0566217e7e50e810cf0a84}{Remover\+Aresta()}}.
+
+\Hypertarget{structadj_a69bb00e4cc274690297b61d3c473cb6e}\index{adj@{adj}!prox@{prox}}
+\index{prox@{prox}!adj@{adj}}
+\doxysubsubsection{\texorpdfstring{prox}{prox}}
+{\footnotesize\ttfamily \label{structadj_a69bb00e4cc274690297b61d3c473cb6e} 
+struct \mbox{\hyperlink{structadj}{adj}}\texorpdfstring{$\ast$}{*} adj\+::prox}
+
+
+
+Referenciado por \mbox{\hyperlink{dados_8h_a10d902139cd18a3bf5aaf99650a4e9d8}{Criar\+Aresta()}}, \mbox{\hyperlink{dados_8h_ac54dde6da30b887fa81dd03092d5fa6c}{Grava\+Antenas\+Binario()}}, \mbox{\hyperlink{dados_8h_aa92eec9996ab024ca52bd9edd4384dff}{Inserir\+Aresta()}}, \mbox{\hyperlink{dados_8h_ae12f7526bb0566217e7e50e810cf0a84}{Remover\+Aresta()}} e \mbox{\hyperlink{dados_8h_a69a4f929d50d9bd6e2629e6586b51f40}{ver\+Profundidade()}}.
+
+
+
+A documentação para esta estrutura foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
 \item 
 src/\mbox{\hyperlink{dados_8h}{dados.\+h}}\end{DoxyCompactItemize}
